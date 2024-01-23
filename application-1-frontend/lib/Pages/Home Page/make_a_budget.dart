@@ -18,13 +18,14 @@ class _BudgetPageState extends State<BudgetPage> {
     'Other': TextEditingController(),
   };
 
-  Map<String, double> _budgetCategories = {}; // Declare _budgetCategories here
+  Map<String, double> _budgetCategories = {};
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Budget Tracker'),
+        backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -33,33 +34,41 @@ class _BudgetPageState extends State<BudgetPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                'Monthly Income:',
-                style: TextStyle(fontSize: 18),
+                'Monthly Income (in Rupees):',
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold),
               ),
+              SizedBox(height: 10),
               TextField(
                 controller: _monthlyIncomeController,
                 keyboardType: TextInputType.number,
+                style: TextStyle(color: Colors.blue, fontSize: 18),
               ),
               SizedBox(height: 20),
               Text(
                 'Budget Categories:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
               ),
               SizedBox(height: 10),
               _buildBudgetCategories(),
-              SizedBox(height: 10), // Add some space
-
-              SizedBox(height: 10), // Add some space
-              Text(
-                'Total Monthly Expense: ${_calculateTotalBudgetCategories().toStringAsFixed(2)}',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 20), // Add some space
+              SizedBox(height: 20),
+              _buildTotalBudgetCategories(),
+              SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   _calculateSavings();
                 },
                 child: Text('Calculate Savings'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  onPrimary: Colors.white,
+                  textStyle: TextStyle(fontSize: 18),
+                ),
               ),
             ],
           ),
@@ -79,7 +88,7 @@ class _BudgetPageState extends State<BudgetPage> {
                 flex: 2,
                 child: Text(
                   entry.key,
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16, color: Colors.blue),
                 ),
               ),
               Expanded(
@@ -90,12 +99,38 @@ class _BudgetPageState extends State<BudgetPage> {
                     setState(() {});
                   },
                   keyboardType: TextInputType.number,
+                  style: TextStyle(color: Colors.blue),
                 ),
               ),
             ],
           ),
         );
       }).toList(),
+    );
+  }
+
+  Widget _buildTotalBudgetCategories() {
+    double totalBudgetCategories = _calculateTotalBudgetCategories();
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.blue),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Total Monthly Expense: ',
+            style: TextStyle(fontSize: 18, color: Colors.blue),
+          ),
+          Text(
+            '\₹${totalBudgetCategories.toStringAsFixed(2)}',
+            style: TextStyle(
+                fontSize: 18, color: Colors.blue, fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
     );
   }
 
@@ -138,10 +173,13 @@ class _BudgetPageState extends State<BudgetPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Total Savings: $savings'),
+              Text('Total Savings: ₹$savings',
+                  style: TextStyle(color: Colors.blue, fontSize: 18)),
               SizedBox(height: 10),
               Text(
-                  'Savings Rate : ${savingsRateVsExpenses.toStringAsFixed(2)}%'),
+                'Savings Rate : ${savingsRateVsExpenses.toStringAsFixed(2)}%',
+                style: TextStyle(color: Colors.blue, fontSize: 18),
+              ),
             ],
           ),
           actions: [
@@ -149,7 +187,8 @@ class _BudgetPageState extends State<BudgetPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('OK'),
+              child: Text('OK',
+                  style: TextStyle(color: Colors.blue, fontSize: 18)),
             ),
           ],
         );
