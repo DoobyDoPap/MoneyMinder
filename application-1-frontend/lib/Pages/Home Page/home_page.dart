@@ -3,7 +3,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
-import '../Utils/utils.dart';
+import '../../Utils/utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -189,6 +189,8 @@ class _HomePageState extends State<HomePage> {
                                     TextButton(
                                       onPressed: () {
                                         print('Make a Budget!');
+                                        Navigator.pushReplacementNamed(
+                                            context, '/budget');
                                       },
                                       child: Text(
                                         '+ Make a Budget',
