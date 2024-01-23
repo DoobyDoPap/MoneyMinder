@@ -267,6 +267,8 @@ class _HomePageState extends State<HomePage> {
                                   onTap: () {
                                     // Handle button press here
                                     print("Button pressed!");
+                                    Navigator.pushReplacementNamed(
+                                        context, '/investment');
                                   },
                                   child: Row(
                                     children: [
