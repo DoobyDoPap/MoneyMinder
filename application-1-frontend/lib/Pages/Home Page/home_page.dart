@@ -188,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                                     Spacer(),
                                     TextButton(
                                       onPressed: () {
-                                        print('Make a Budget!');
+                                        print('Budget Tracker!');
                                         Navigator.pushReplacementNamed(
                                             context, '/budget');
                                       },
