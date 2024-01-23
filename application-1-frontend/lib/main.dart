@@ -3,6 +3,7 @@
 // ignore_for_file: unused_import
 
 // Import necessary packages and files
+import 'package:finku_clone_slicing/Pages/Home%20Page/create_invoice.dart';
 import 'package:finku_clone_slicing/Pages/Home%20Page/make_a_budget.dart';
 import 'package:flutter/material.dart';
 import 'package:finku_clone_slicing/Pages/Home%20Page/home_page.dart';
@@ -27,8 +28,8 @@ class MyApp extends StatelessWidget {
         "/": (context) => LoginPage(),
         MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.loginRoute: (context) => LoginPage(),
-        MyRoutes.budgetRoute: (context) =>
-            BudgetPage(), // Add this line for the budget page
+        MyRoutes.budgetRoute: (context) => BudgetPage(),
+        MyRoutes.invoiceRoute: (context) => InvoicePage()
       },
     );
   }

@@ -334,6 +334,8 @@ class _HomePageState extends State<HomePage> {
                                   onPressed: () {
                                     // Handle button press here
                                     print('Create Invoice pressed!');
+                                    Navigator.pushReplacementNamed(
+                                        context, '/invoice');
                                   },
                                   child: Text(
                                     '+Create Invoice',
