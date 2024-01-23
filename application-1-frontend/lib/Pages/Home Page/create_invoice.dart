@@ -30,17 +30,17 @@ class InvoicePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Customer Name: John Doe',
+              'Customer Name: Veeransh Shah',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
-              'Phone Number: +1 123-456-7890',
+              'Phone Number: +91 7045655640',
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 8),
             Text(
-              'Email ID: john.doe@example.com',
+              'Email ID: veeransh@gmail.com',
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 16),
