@@ -44,7 +44,8 @@ class _BudgetPageState extends State<BudgetPage> {
               TextField(
                 controller: _monthlyIncomeController,
                 keyboardType: TextInputType.number,
-                style: TextStyle(color: Colors.blue, fontSize: 18),
+                style: TextStyle(
+                    color: Color.fromARGB(167, 48, 64, 241), fontSize: 18),
               ),
               SizedBox(height: 20),
               Text(
