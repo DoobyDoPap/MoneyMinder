@@ -48,7 +48,7 @@ class LoginPage extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('OK'),
+              child: Text('OK', style: TextStyle(color: Colors.red)),
             ),
           ],
         );
@@ -76,15 +76,17 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Fintech Logo and App Name
+              // Your App Logo and Name
               Padding(
                 padding: const EdgeInsets.only(bottom: 32.0),
                 child: Column(
                   children: [
-                    Icon(
-                      Icons.account_balance_wallet,
+                    // Replace the image path with your asset image
+                    Image.asset(
+                      'assets/images/MoneyMinder_logo.png',
+                      height: 80.0,
+                      width: 80.0,
                       color: Colors.white,
-                      size: 50.0,
                     ),
                     SizedBox(height: 16.0),
                     Text(
