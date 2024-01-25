@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "592025158422",
+    "project_id": "moneyminder-c5285",
+    "storage_bucket": "moneyminder-c5285.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592025158422:android:2d40643b0d7383f3b00637",
+        "android_client_info": {
+          "package_name": "com.example.finku_clone_slicing"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkjd-AKGtgz6q8GQXbaiu61AGmYIal22w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
