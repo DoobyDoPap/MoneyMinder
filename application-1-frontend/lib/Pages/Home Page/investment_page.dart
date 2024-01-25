@@ -28,7 +28,7 @@ class InvestmentOptionsPage extends StatelessWidget {
         title: Text('Investment Options'),
       ),
       body: Container(
-        color: Colors.blueGrey[100], // Set a background color
+        color: Colors.blueGrey[100],
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -88,6 +88,14 @@ class InvestmentOptionsPage extends StatelessWidget {
                   iconData: Icons.account_balance_wallet,
                   backgroundColor: Colors.deepOrange,
                 ),
+                SizedBox(height: 16),
+                InvestmentOptionButton(
+                  title: 'SIP',
+                  description:
+                      'Invest regularly with Systematic Investment Plan.',
+                  iconData: Icons.schedule,
+                  backgroundColor: Colors.teal,
+                ),
               ],
             ),
           ),
@@ -122,7 +130,7 @@ class InvestmentOptionButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.0),
         ),
         padding: const EdgeInsets.all(16.0),
-        primary: backgroundColor, // Set button color
+        primary: backgroundColor,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +140,7 @@ class InvestmentOptionButton extends StatelessWidget {
               Icon(
                 iconData,
                 size: 30,
-                color: Colors.white, // Set icon color
+                color: Colors.white,
               ),
               SizedBox(width: 8),
               Text(
@@ -140,7 +148,7 @@ class InvestmentOptionButton extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white, // Set text color
+                  color: Colors.white,
                 ),
               ),
             ],
@@ -150,7 +158,7 @@ class InvestmentOptionButton extends StatelessWidget {
             description,
             style: TextStyle(
               fontSize: 16,
-              color: Colors.white70, // Set description text color
+              color: Colors.white70,
             ),
           ),
         ],
