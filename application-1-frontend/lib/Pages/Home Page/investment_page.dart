@@ -50,7 +50,7 @@ class InvestmentOptionsPage extends StatelessWidget {
                   iconData: Icons.attach_money,
                   backgroundColor: Colors.blue,
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushReplacementNamed(context, '/mf');
                   },
                 ),
                 SizedBox(height: 16),
@@ -61,7 +61,7 @@ class InvestmentOptionsPage extends StatelessWidget {
                   iconData: Icons.account_balance,
                   backgroundColor: Colors.green,
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/login');
+                    Navigator.pushReplacementNamed(context, '/fd');
                   },
                 ),
                 SizedBox(height: 16),

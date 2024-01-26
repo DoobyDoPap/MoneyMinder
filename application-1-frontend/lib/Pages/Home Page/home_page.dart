@@ -276,7 +276,7 @@ class _HomePageState extends State<HomePage> {
                                         backgroundColor: Colors.red[100],
                                         child: const Center(
                                           child: Text(
-                                            "28",
+                                            "8",
                                             style: TextStyle(
                                               color: Colors
                                                   .red, // Use Colors.red for consistency

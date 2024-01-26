@@ -5,6 +5,8 @@
 // Import necessary packages and files
 
 import 'package:finku_clone_slicing/Pages/Home%20Page/splash_page.dart';
+import 'package:finku_clone_slicing/Pages/Investment/fixed_deposits.dart';
+import 'package:finku_clone_slicing/Pages/Investment/mutual_fund_page.dart';
 import 'package:finku_clone_slicing/Pages/Investment/stock_market_page.dart';
 import 'package:finku_clone_slicing/Utils/routes.dart';
 
@@ -39,6 +41,8 @@ class MyApp extends StatelessWidget {
         MyRoutes.splashRoute: (context) => SplashScreenPage(),
         MyRoutes.stockRoute: (context) => StockMarketPage(),
         MyRoutes.stockRoute: (context) => MyStockMarketApp(),
+        MyRoutes.fdRoute: (context) => FixedDepositPage(),
+        MyRoutes.mfRoute: (context) => MutualFundPage(),
       },
     );
   }

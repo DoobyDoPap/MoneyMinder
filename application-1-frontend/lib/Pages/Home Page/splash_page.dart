@@ -15,7 +15,8 @@ class SplashScreenPage extends StatelessWidget {
           children: [
             Image.asset(
               'assets/images/logo.png',
-              fit: BoxFit.cover,
+              fit: BoxFit
+                  .contain, // Use BoxFit.contain to keep the size of the logo
               width: double.infinity,
               height: double.infinity,
             ),
