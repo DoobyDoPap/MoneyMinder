@@ -19,7 +19,7 @@ class SplashScreenPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Money',
+                    '',
                     style: Theme.of(context).textTheme.bodyText1?.copyWith(
                           fontSize: 60.0,
                           color: Color.fromRGBO(255, 255, 255, 1),
@@ -28,14 +28,14 @@ class SplashScreenPage extends StatelessWidget {
                         ),
                   ),
                   Text(
-                    'with a single tap',
+                    '',
                   ),
                 ],
               ),
               Image.asset(
                 'assets/images/logo.png',
-                height: 100.0,
-                width: 100.0,
+                height: 500.0,
+                width: 500.0,
               ),
             ],
           ),
