@@ -103,7 +103,7 @@ class InvestmentOptionsPage extends StatelessWidget {
                   iconData: Icons.timeline,
                   backgroundColor: Colors.cyan,
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushReplacementNamed(context, '/bonds');
                   },
                 ),
                 SizedBox(height: 16),
@@ -114,7 +114,7 @@ class InvestmentOptionsPage extends StatelessWidget {
                   iconData: Icons.account_balance_wallet,
                   backgroundColor: Colors.deepOrange,
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushReplacementNamed(context, '/crypto');
                   },
                 ),
                 SizedBox(height: 16),

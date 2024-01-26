@@ -5,6 +5,8 @@
 // Import necessary packages and files
 
 import 'package:finku_clone_slicing/Pages/Home%20Page/splash_page.dart';
+import 'package:finku_clone_slicing/Pages/Investment/bonds_page.dart';
+import 'package:finku_clone_slicing/Pages/Investment/crypto_market_page.dart';
 import 'package:finku_clone_slicing/Pages/Investment/fixed_deposits.dart';
 import 'package:finku_clone_slicing/Pages/Investment/gold_trade_page.dart';
 import 'package:finku_clone_slicing/Pages/Investment/mutual_fund_page.dart';
@@ -47,6 +49,8 @@ class MyApp extends StatelessWidget {
         MyRoutes.mfRoute: (context) => MutualFundPage(),
         MyRoutes.estateRoute: (context) => RealEstatePage(),
         MyRoutes.goldRoute: (context) => GoldTradePage(),
+        MyRoutes.bondsRoute: (context) => BondsPage(),
+        MyRoutes.cryptoRoute: (context) => CryptoMarketPage(),
       },
     );
   }
