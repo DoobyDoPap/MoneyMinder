@@ -93,7 +93,7 @@ class InvestmentOptionsPage extends StatelessWidget {
                   iconData: Icons.monetization_on,
                   backgroundColor: Colors.amber,
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushReplacementNamed(context, '/gold');
                   },
                 ),
                 SizedBox(height: 16),

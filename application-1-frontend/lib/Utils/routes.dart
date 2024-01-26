@@ -9,4 +9,5 @@ class MyRoutes {
   static String fdRoute = "/fd";
   static String mfRoute = "/mf";
   static String estateRoute = "/estate";
+  static String goldRoute = "/gold";
 }
