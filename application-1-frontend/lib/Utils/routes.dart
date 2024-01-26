@@ -13,4 +13,5 @@ class MyRoutes {
   static String bondsRoute = "/bonds";
   static String cryptoRoute = "/crypto";
   static String sipRoute = "/sip";
+  static String achievementRoute = "/achievement";
 }

@@ -542,6 +542,8 @@ class _HomePageState extends State<HomePage> {
                                   onTap: () {
                                     // Handle Achievements button press
                                     print("Achievements button pressed!");
+                                    Navigator.pushReplacementNamed(
+                                        context, '/achievement');
                                   },
                                   child: Stack(
                                     children: [
