@@ -8,4 +8,5 @@ class MyRoutes {
   static String stockRoute = "/stock";
   static String fdRoute = "/fd";
   static String mfRoute = "/mf";
+  static String estateRoute = "/estate";
 }

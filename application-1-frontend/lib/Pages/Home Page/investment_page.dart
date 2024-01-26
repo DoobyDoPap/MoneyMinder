@@ -82,7 +82,7 @@ class InvestmentOptionsPage extends StatelessWidget {
                   iconData: Icons.home,
                   backgroundColor: Colors.purple,
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushReplacementNamed(context, '/estate');
                   },
                 ),
                 SizedBox(height: 16),
