@@ -11,6 +11,7 @@ import 'package:finku_clone_slicing/Pages/Investment/fixed_deposits.dart';
 import 'package:finku_clone_slicing/Pages/Investment/gold_trade_page.dart';
 import 'package:finku_clone_slicing/Pages/Investment/mutual_fund_page.dart';
 import 'package:finku_clone_slicing/Pages/Investment/real_estate_page.dart';
+import 'package:finku_clone_slicing/Pages/Investment/sip_page.dart';
 import 'package:finku_clone_slicing/Pages/Investment/stock_market_page.dart';
 import 'package:finku_clone_slicing/Utils/routes.dart';
 
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.goldRoute: (context) => GoldTradePage(),
         MyRoutes.bondsRoute: (context) => BondsPage(),
         MyRoutes.cryptoRoute: (context) => CryptoMarketPage(),
+        MyRoutes.sipRoute: (context) => SIPPage(),
       },
     );
   }

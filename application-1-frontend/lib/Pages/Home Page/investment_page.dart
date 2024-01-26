@@ -125,7 +125,7 @@ class InvestmentOptionsPage extends StatelessWidget {
                   iconData: Icons.schedule,
                   backgroundColor: Colors.teal,
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushReplacementNamed(context, '/sip');
                   },
                 ),
               ],
