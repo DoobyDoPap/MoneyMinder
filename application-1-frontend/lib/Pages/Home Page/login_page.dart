@@ -83,9 +83,9 @@ class LoginPage extends StatelessWidget {
                   children: [
                     // Replace the image path with your asset image
                     Image.asset(
-                      'assets/images/MoneyMinder_logo.png',
-                      height: 80.0,
-                      width: 80.0,
+                      'assets/images/logo.png',
+                      height: 220.0,
+                      width: 150.0,
                       color: Colors.white,
                     ),
                     SizedBox(height: 16.0),
