@@ -5,4 +5,5 @@ class MyRoutes {
   static String invoiceRoute = "/invoice";
   static String investmentRoute = "/investment";
   static String splashRoute = "/splash";
+  static String stockRoute = "/stock";
 }

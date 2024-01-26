@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        colorScheme:
-            ColorScheme.fromSwatch().copyWith(secondary: Colors.blueAccent),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+            .copyWith(secondary: Colors.blueAccent),
       ),
       home: InvestmentOptionsPage(),
     );
@@ -26,6 +26,14 @@ class InvestmentOptionsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Investment Options'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/home');
+            },
+          ),
+        ],
       ),
       body: Container(
         color: Colors.blueGrey[100],
@@ -41,6 +49,9 @@ class InvestmentOptionsPage extends StatelessWidget {
                       'Diversify your investments through mutual funds.',
                   iconData: Icons.attach_money,
                   backgroundColor: Colors.blue,
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/home');
+                  },
                 ),
                 SizedBox(height: 16),
                 InvestmentOptionButton(
@@ -49,6 +60,9 @@ class InvestmentOptionsPage extends StatelessWidget {
                       'Earn fixed returns with low-risk fixed deposits.',
                   iconData: Icons.account_balance,
                   backgroundColor: Colors.green,
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/login');
+                  },
                 ),
                 SizedBox(height: 16),
                 InvestmentOptionButton(
@@ -56,6 +70,9 @@ class InvestmentOptionsPage extends StatelessWidget {
                   description: 'Invest in stocks for potential high returns.',
                   iconData: Icons.trending_up,
                   backgroundColor: Colors.orange,
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/stock');
+                  },
                 ),
                 SizedBox(height: 16),
                 InvestmentOptionButton(
@@ -64,6 +81,9 @@ class InvestmentOptionsPage extends StatelessWidget {
                       'Explore real estate investments for long-term growth.',
                   iconData: Icons.home,
                   backgroundColor: Colors.purple,
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/home');
+                  },
                 ),
                 SizedBox(height: 16),
                 InvestmentOptionButton(
@@ -72,6 +92,9 @@ class InvestmentOptionsPage extends StatelessWidget {
                       'Invest in gold for stability and long-term value.',
                   iconData: Icons.monetization_on,
                   backgroundColor: Colors.amber,
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/home');
+                  },
                 ),
                 SizedBox(height: 16),
                 InvestmentOptionButton(
@@ -79,6 +102,9 @@ class InvestmentOptionsPage extends StatelessWidget {
                   description: 'Invest in bonds for fixed income and low risk.',
                   iconData: Icons.timeline,
                   backgroundColor: Colors.cyan,
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/home');
+                  },
                 ),
                 SizedBox(height: 16),
                 InvestmentOptionButton(
@@ -87,6 +113,9 @@ class InvestmentOptionsPage extends StatelessWidget {
                       'Explore the volatile but potentially rewarding crypto market.',
                   iconData: Icons.account_balance_wallet,
                   backgroundColor: Colors.deepOrange,
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/home');
+                  },
                 ),
                 SizedBox(height: 16),
                 InvestmentOptionButton(
@@ -95,6 +124,9 @@ class InvestmentOptionsPage extends StatelessWidget {
                       'Invest regularly with Systematic Investment Plan.',
                   iconData: Icons.schedule,
                   backgroundColor: Colors.teal,
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/home');
+                  },
                 ),
               ],
             ),
@@ -110,58 +142,61 @@ class InvestmentOptionButton extends StatelessWidget {
   final String description;
   final IconData iconData;
   final Color backgroundColor;
+  final VoidCallback onPressed;
 
   InvestmentOptionButton({
     required this.title,
     required this.description,
     required this.iconData,
     required this.backgroundColor,
+    required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        // Add functionality for button press if needed
-      },
-      style: ElevatedButton.styleFrom(
-        elevation: 4,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0),
+    return InkWell(
+      onTap: onPressed,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          elevation: 4,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          padding: const EdgeInsets.all(16.0),
+          primary: backgroundColor,
         ),
-        padding: const EdgeInsets.all(16.0),
-        primary: backgroundColor,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(
-                iconData,
-                size: 30,
-                color: Colors.white,
-              ),
-              SizedBox(width: 8),
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+        onPressed: onPressed,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  iconData,
+                  size: 30,
                   color: Colors.white,
                 ),
-              ),
-            ],
-          ),
-          SizedBox(height: 8),
-          Text(
-            description,
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.white70,
+                SizedBox(width: 8),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
+            SizedBox(height: 8),
+            Text(
+              description,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.white70,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

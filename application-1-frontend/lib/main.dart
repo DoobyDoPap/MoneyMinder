@@ -4,8 +4,8 @@
 
 // Import necessary packages and files
 
-
 import 'package:finku_clone_slicing/Pages/Home%20Page/splash_page.dart';
+import 'package:finku_clone_slicing/Pages/Investment/stock_market_page.dart';
 import 'package:finku_clone_slicing/Utils/routes.dart';
 
 import 'package:flutter/material.dart';
@@ -36,7 +36,9 @@ class MyApp extends StatelessWidget {
         MyRoutes.budgetRoute: (context) => BudgetPage(),
         MyRoutes.invoiceRoute: (context) => InvoicePage(),
         MyRoutes.investmentRoute: (context) => InvestmentOptionsPage(),
-        MyRoutes.splashRoute:(context) => SplashScreenPage(),
+        MyRoutes.splashRoute: (context) => SplashScreenPage(),
+        MyRoutes.stockRoute: (context) => StockMarketPage(),
+        MyRoutes.stockRoute: (context) => MyStockMarketApp(),
       },
     );
   }
