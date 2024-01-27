@@ -727,123 +727,143 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       height: 20.0,
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      height: 240.0,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            spreadRadius: 4,
-                            blurRadius: 5,
-                            offset: const Offset(0, 7),
-                          ),
-                        ],
-                        color: white,
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(
-                            16.0,
-                          ),
-                        ),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: const [
-                              Text(
-                                '🎯 Target',
-                                style: TextStyle(
-                                  color: black,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Spacer(),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                                size: 18,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 15.0,
-                          ),
-                          DottedBorder(
-                            borderType: BorderType.RRect,
-                            radius: const Radius.circular(12),
-                            dashPattern: const [4],
-                            color: secondary,
-                            strokeWidth: 2,
-                            child: Container(
-                              padding: const EdgeInsets.only(
-                                  left: 10, right: 10, top: 10, bottom: 10),
-                              width: double.infinity,
-                              height: 140,
-                              child: Row(
-                                children: [
-                                  const FlutterLogo(
-                                    size: 30,
-                                  ),
-                                  const SizedBox(
-                                    width: 15.0,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      const SizedBox(
-                                        width: 270,
-                                        child: Text(
-                                          'Lets record and achieve your financial targets today!',
-                                          style: TextStyle(
-                                            color: black,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 200,
-                                        child: Text(
-                                          'Write down your targets so that your dream vacation & home does not become a dream',
-                                          softWrap: true,
-                                          style: TextStyle(
-                                            color: Colors.black54,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ),
-                                      Row(
-                                        children: const [
-                                          Text(
-                                            'Add',
-                                            style: TextStyle(
-                                              color: primary,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 5,
-                                          ),
-                                          Icon(
-                                            Icons.arrow_forward_ios,
-                                            color: primary,
-                                            size: 16,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                    GestureDetector(
+                      onTap: () {
+                        // Add your desired action when the container is tapped
+                        print('Container tapped!');
+                        // Add any other actions you want to perform
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(16),
+                        height: 240.0,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              spreadRadius: 4,
+                              blurRadius: 5,
+                              offset: const Offset(0, 7),
+                            ),
+                          ],
+                          color: white,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(
+                              16.0,
                             ),
                           ),
-                        ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  '🎯 Target',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Spacer(),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pushReplacementNamed(
+                                        context, '/target');
+                                    // Handle button tap here
+                                    // For example, you can navigate to another screen or perform some action
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors
+                                        .transparent, // Set the button background color to be transparent
+                                    elevation: 0, // Remove the button shadow
+                                  ),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 18,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 15.0,
+                            ),
+                            DottedBorder(
+                              borderType: BorderType.RRect,
+                              radius: const Radius.circular(12),
+                              dashPattern: const [4],
+                              color: secondary,
+                              strokeWidth: 2,
+                              child: Container(
+                                padding: const EdgeInsets.only(
+                                    left: 10, right: 10, top: 10, bottom: 10),
+                                width: double.infinity,
+                                height: 140,
+                                child: Row(
+                                  children: [
+                                    const FlutterLogo(
+                                      size: 30,
+                                    ),
+                                    const SizedBox(
+                                      width: 15.0,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        const SizedBox(
+                                          width: 270,
+                                          child: Text(
+                                            'Lets record and achieve your financial targets today!',
+                                            style: TextStyle(
+                                              color: black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 200,
+                                          child: Text(
+                                            'Write down your targets so that your dream vacation & home does not become a dream',
+                                            softWrap: true,
+                                            style: TextStyle(
+                                              color: Colors.black54,
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text(
+                                              'Add',
+                                              style: TextStyle(
+                                                color: primary,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 5,
+                                            ),
+                                            Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: primary,
+                                              size: 16,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -1088,24 +1108,29 @@ class _HomePageState extends State<HomePage> {
                                 width: 10.0,
                               ),
                               Expanded(
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  padding: const EdgeInsets.all(10),
-                                  height: 60.0,
-                                  decoration: BoxDecoration(
-                                    color: secondary,
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(
-                                        16.0,
-                                      ),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    // Handle button tap here
+                                    // For example, you can navigate to another screen or perform some action
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    padding: const EdgeInsets.all(10),
+                                    primary: secondary,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16.0),
                                     ),
                                   ),
-                                  child: const Text(
-                                    "See Other Benefits",
-                                    style: TextStyle(
+                                  child: Container(
+                                    height: 60.0,
+                                    alignment: Alignment.center,
+                                    child: const Text(
+                                      "See Other Benefits",
+                                      style: TextStyle(
                                         fontSize: 13,
                                         color: primary,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
