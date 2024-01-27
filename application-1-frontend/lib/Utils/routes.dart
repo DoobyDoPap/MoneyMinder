@@ -18,4 +18,5 @@ class MyRoutes {
   static String splitRoute = "/split";
   static String targetRoute = "/target";
   static String activateRoute = "/activate";
+  static String learnRoute = "/learn";
 }

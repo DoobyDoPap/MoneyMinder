@@ -1788,26 +1788,36 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(
                             height: 5,
                           ),
-                          Row(
-                            children: const [
-                              Text(
-                                'Learn from us',
-                                style: TextStyle(
-                                  color: primary,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(context, '/learn');
+                              // Handle button tap action here
+                              print('Button tapped!');
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: primary, // Set the background color
+                            ),
+                            child: Row(
+                              children: const [
+                                Text(
+                                  'Learn from us',
+                                  style: TextStyle(
+                                    color: Colors.white, // Set the text color
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                                color: primary,
-                                size: 12,
-                              ),
-                            ],
-                          ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Colors.white, // Set the icon color
+                                  size: 12,
+                                ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
                     ),
