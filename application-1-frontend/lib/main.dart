@@ -7,6 +7,7 @@
 import 'package:finku_clone_slicing/Pages/Home%20Page/activate_page.dart';
 import 'package:finku_clone_slicing/Pages/Home%20Page/last_transaction.dart';
 import 'package:finku_clone_slicing/Pages/Home%20Page/learn_from_us.dart';
+import 'package:finku_clone_slicing/Pages/Home%20Page/signup_page.dart';
 import 'package:finku_clone_slicing/Pages/Home%20Page/splash_page.dart';
 import 'package:finku_clone_slicing/Pages/Home%20Page/target_page.dart';
 import 'package:finku_clone_slicing/Pages/Interesting%20Features/split_bills.dart';
@@ -65,6 +66,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.targetRoute: (context) => TargetPage(),
         MyRoutes.activateRoute: (context) => LoanApplicationPage(),
         MyRoutes.learnRoute: (context) => UserGuidePage(),
+        MyRoutes.signupRoute: (context) => SignUpPage(),
       },
     );
   }

@@ -1,25 +1,25 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
-import 'home_page.dart';
 
-class LoginPage extends StatelessWidget {
+class SignUpPage extends StatelessWidget {
   final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  void _signIn(BuildContext context) {
+  void _signUp(BuildContext context) {
     if (_usernameController.text.isNotEmpty &&
+        _emailController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty) {
-      // Your login logic here
-      Navigator.pushReplacementNamed(context, '/home');
+      // Your signup logic here
+      // You might want to navigate to the home page or show a confirmation message
+      Navigator.pop(context); // Close the signup page
     } else {
-      // Show a pop-up message if either username or password is not entered
+      // Show a pop-up message if any of the fields is not entered
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text('Error'),
-            content: Text('Please enter both username and password.'),
+            content: Text('Please enter all required information.'),
             actions: [
               TextButton(
                 onPressed: () {
@@ -34,31 +34,12 @@ class LoginPage extends StatelessWidget {
     }
   }
 
-  void _navigateToSignUp(BuildContext context) {
-    // Implement navigation to the sign-up page here
-    // For example: Navigator.pushNamed(context, '/signup');
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Sign Up'),
-          content: Text('Navigate to the sign-up page here.'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/signup');
-              },
-              child: Text('OK', style: TextStyle(color: Colors.red)),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Sign Up'),
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -118,13 +99,31 @@ class LoginPage extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               SizedBox(height: 16.0),
+              // Email TextField
+              TextField(
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.email, color: Colors.white),
+                  labelText: 'Email',
+                  hintText: 'Enter email',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white.withOpacity(0.3),
+                ),
+                style: TextStyle(color: Colors.white),
+              ),
+              SizedBox(height: 16.0),
               // Password TextField
               TextField(
                 controller: _passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.lock, color: Colors.white),
-                  labelText: 'Password',
+                  labelText: 'Create Password',
                   hintText: 'Enter password',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
@@ -136,9 +135,9 @@ class LoginPage extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               SizedBox(height: 24.0),
-              // Login Button
+              // Sign Up Button
               ElevatedButton(
-                onPressed: () => _signIn(context),
+                onPressed: () => _signUp(context),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -149,20 +148,11 @@ class LoginPage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 12.0),
                   child: Center(
                     child: Text(
-                      'Login',
+                      'Sign Up',
                       style:
                           TextStyle(fontSize: 16.0, color: Color(0xFF004080)),
                     ),
                   ),
-                ),
-              ),
-              SizedBox(height: 16.0),
-              // Don't have an account? Sign up
-              TextButton(
-                onPressed: () => _navigateToSignUp(context),
-                child: Text(
-                  "Don't have an account? Sign up",
-                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ],
@@ -171,4 +161,12 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+}
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: SignUpPage(),
+    ),
+  );
 }
