@@ -4,6 +4,7 @@
 
 // Import necessary packages and files
 
+import 'package:finku_clone_slicing/Pages/Home%20Page/last_transaction.dart';
 import 'package:finku_clone_slicing/Pages/Home%20Page/splash_page.dart';
 import 'package:finku_clone_slicing/Pages/Interesting%20Features/achievements_page.dart';
 import 'package:finku_clone_slicing/Pages/Investment/bonds_page.dart';
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.cryptoRoute: (context) => CryptoMarketPage(),
         MyRoutes.sipRoute: (context) => SIPPage(),
         MyRoutes.achievementRoute: (context) => AchievementPage(),
+        MyRoutes.transactionRoute: (context) => TransactionHistoryPage(),
       },
     );
   }

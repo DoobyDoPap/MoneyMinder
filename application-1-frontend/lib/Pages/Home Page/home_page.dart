@@ -393,6 +393,8 @@ class _HomePageState extends State<HomePage> {
                               Spacer(),
                               InkWell(
                                 onTap: () {
+                                  Navigator.pushReplacementNamed(
+                                      context, '/transaction');
                                   // Handle button press here
                                   print("Button pressed!");
                                 },
