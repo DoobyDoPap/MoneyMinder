@@ -893,7 +893,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
-                            children: const [
+                            children: [
                               Text(
                                 '💰 MoneyMinder',
                                 style: TextStyle(
@@ -903,12 +903,25 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Spacer(),
-                              Text(
-                                'Activate',
-                                style: TextStyle(
-                                  color: primary,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pushReplacementNamed(
+                                      context, '/activate');
+                                  // Add your button click logic here
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary:
+                                      primary, // Set your primary color here
+                                  elevation: 0, // Customize elevation as needed
+                                ),
+                                child: Text(
+                                  'Activate',
+                                  style: TextStyle(
+                                    color: Colors
+                                        .white, // Set text color to contrast with the button color
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -1003,7 +1016,7 @@ class _HomePageState extends State<HomePage> {
                                               ),
                                             ),
                                             TextSpan(
-                                              text: 'Instant submission',
+                                              text: 'Instant KYC',
                                               style: TextStyle(
                                                   color: Colors.black45,
                                                   fontWeight: FontWeight.w500),
@@ -1110,6 +1123,8 @@ class _HomePageState extends State<HomePage> {
                               Expanded(
                                 child: ElevatedButton(
                                   onPressed: () {
+                                    Navigator.pushReplacementNamed(
+                                        context, '/activate');
                                     // Handle button tap here
                                     // For example, you can navigate to another screen or perform some action
                                   },

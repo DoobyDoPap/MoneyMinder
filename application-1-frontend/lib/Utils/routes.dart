@@ -17,4 +17,5 @@ class MyRoutes {
   static String transactionRoute = "/transaction";
   static String splitRoute = "/split";
   static String targetRoute = "/target";
+  static String activateRoute = "/activate";
 }
