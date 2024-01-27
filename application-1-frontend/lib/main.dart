@@ -6,6 +6,7 @@
 
 import 'package:finku_clone_slicing/Pages/Home%20Page/last_transaction.dart';
 import 'package:finku_clone_slicing/Pages/Home%20Page/splash_page.dart';
+import 'package:finku_clone_slicing/Pages/Interesting%20Features/split_bills.dart';
 import 'package:finku_clone_slicing/Pages/Interesting%20Features/achievements_page.dart';
 import 'package:finku_clone_slicing/Pages/Investment/bonds_page.dart';
 import 'package:finku_clone_slicing/Pages/Investment/crypto_market_page.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/splash',
       routes: {
-        "/": (context) => LoginPage(),
+        "/": (context) => HomePage(),
         MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.loginRoute: (context) => LoginPage(),
         MyRoutes.budgetRoute: (context) => BudgetPage(),
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.sipRoute: (context) => SIPPage(),
         MyRoutes.achievementRoute: (context) => AchievementPage(),
         MyRoutes.transactionRoute: (context) => TransactionHistoryPage(),
+        MyRoutes.splitRoute: (context) => GroupsPage(),
       },
     );
   }
