@@ -1,6 +1,6 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:finku_clone_slicing/Utils/utils.dart';
+import 'package:MoneyMinder/Utils/utils.dart';
 import 'package:flutter/material.dart';
 
 void main() {

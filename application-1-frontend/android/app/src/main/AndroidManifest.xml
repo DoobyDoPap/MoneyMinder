@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.finku_clone_slicing">
+    package="com.example.MoneyMinder">
    <application
-        android:label="finku_clone_slicing"
+        android:label="MoneyMinder"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

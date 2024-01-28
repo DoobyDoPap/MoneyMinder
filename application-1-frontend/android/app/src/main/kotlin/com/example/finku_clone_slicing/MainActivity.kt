@@ -1,4 +1,4 @@
-package com.example.finku_clone_slicing
+package com.example.MoneyMinder
 
 import io.flutter.embedding.android.FlutterActivity
 

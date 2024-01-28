@@ -4,23 +4,23 @@
 
 // Import necessary packages and files
 
-import 'package:finku_clone_slicing/Pages/Home%20Page/activate_page.dart';
-import 'package:finku_clone_slicing/Pages/Home%20Page/last_transaction.dart';
-import 'package:finku_clone_slicing/Pages/Home%20Page/learn_from_us.dart';
-import 'package:finku_clone_slicing/Pages/Home%20Page/signup_page.dart';
-import 'package:finku_clone_slicing/Pages/Home%20Page/splash_page.dart';
-import 'package:finku_clone_slicing/Pages/Home%20Page/target_page.dart';
-import 'package:finku_clone_slicing/Pages/Interesting%20Features/split_bills.dart';
-import 'package:finku_clone_slicing/Pages/Interesting%20Features/achievements_page.dart';
-import 'package:finku_clone_slicing/Pages/Investment/bonds_page.dart';
-import 'package:finku_clone_slicing/Pages/Investment/crypto_market_page.dart';
-import 'package:finku_clone_slicing/Pages/Investment/fixed_deposits.dart';
-import 'package:finku_clone_slicing/Pages/Investment/gold_trade_page.dart';
-import 'package:finku_clone_slicing/Pages/Investment/mutual_fund_page.dart';
-import 'package:finku_clone_slicing/Pages/Investment/real_estate_page.dart';
-import 'package:finku_clone_slicing/Pages/Investment/sip_page.dart';
-import 'package:finku_clone_slicing/Pages/Investment/stock_market_page.dart';
-import 'package:finku_clone_slicing/Utils/routes.dart';
+import 'package:MoneyMinder/Pages/Home%20Page/activate_page.dart';
+import 'package:MoneyMinder/Pages/Home%20Page/last_transaction.dart';
+import 'package:MoneyMinder/Pages/Home%20Page/learn_from_us.dart';
+import 'package:MoneyMinder/Pages/Home%20Page/signup_page.dart';
+import 'package:MoneyMinder/Pages/Home%20Page/splash_page.dart';
+import 'package:MoneyMinder/Pages/Home%20Page/target_page.dart';
+import 'package:MoneyMinder/Pages/Interesting%20Features/split_bills.dart';
+import 'package:MoneyMinder/Pages/Interesting%20Features/achievements_page.dart';
+import 'package:MoneyMinder/Pages/Investment/bonds_page.dart';
+import 'package:MoneyMinder/Pages/Investment/crypto_market_page.dart';
+import 'package:MoneyMinder/Pages/Investment/fixed_deposits.dart';
+import 'package:MoneyMinder/Pages/Investment/gold_trade_page.dart';
+import 'package:MoneyMinder/Pages/Investment/mutual_fund_page.dart';
+import 'package:MoneyMinder/Pages/Investment/real_estate_page.dart';
+import 'package:MoneyMinder/Pages/Investment/sip_page.dart';
+import 'package:MoneyMinder/Pages/Investment/stock_market_page.dart';
+import 'package:MoneyMinder/Utils/routes.dart';
 
 import 'package:flutter/material.dart';
 

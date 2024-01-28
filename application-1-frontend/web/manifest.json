@@ -1,6 +1,6 @@
 {
-    "name": "finku_clone_slicing",
-    "short_name": "finku_clone_slicing",
+    "name": "MoneyMinder",
+    "short_name": "MoneyMinder",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
