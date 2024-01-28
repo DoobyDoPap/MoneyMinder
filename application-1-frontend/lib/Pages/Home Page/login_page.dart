@@ -1,5 +1,3 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 
@@ -35,25 +33,8 @@ class LoginPage extends StatelessWidget {
   }
 
   void _navigateToSignUp(BuildContext context) {
-    // Implement navigation to the sign-up page here
-    // For example: Navigator.pushNamed(context, '/signup');
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Sign Up'),
-          content: Text('Navigate to the sign-up page here.'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/signup');
-              },
-              child: Text('OK', style: TextStyle(color: Colors.red)),
-            ),
-          ],
-        );
-      },
-    );
+    // Directly navigate to the sign-up page
+    Navigator.pushReplacementNamed(context, '/signup');
   }
 
   @override
@@ -171,4 +152,12 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+}
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: LoginPage(),
+    ),
+  );
 }

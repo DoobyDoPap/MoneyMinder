@@ -34,6 +34,10 @@ class SignUpPage extends StatelessWidget {
     }
   }
 
+  void _goToLogin(BuildContext context) {
+    Navigator.pushNamed(context, '/login');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -149,10 +153,18 @@ class SignUpPage extends StatelessWidget {
                   child: Center(
                     child: Text(
                       'Sign Up',
-                      style:
-                          TextStyle(fontSize: 16.0, color: Color(0xFF004080)),
+                      style: TextStyle(fontSize: 16.0, color: Color(0xFF004080)),
                     ),
                   ),
+                ),
+              ),
+              SizedBox(height: 12.0),
+              // Login Option
+              TextButton(
+                onPressed: () => _goToLogin(context),
+                child: Text(
+                  'Already have an account? Login',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ],
