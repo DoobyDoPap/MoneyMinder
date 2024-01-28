@@ -1,3 +1,7 @@
+import 'dart:js';
+
+import 'package:MoneyMinder/Pages/Home%20Page/uihelper.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -37,6 +41,22 @@ class SignUpPage extends StatelessWidget {
   void _goToLogin(BuildContext context) {
     Navigator.pushNamed(context, '/login');
   }
+  signUp(BuildContext context, String email, String password) async {
+  if (email.isEmpty || password.isEmpty) {
+    UiHelper.CustomAlertBox(context, "Enter Required Fields");
+  } else {
+    UserCredential? userCredential;
+    try {
+      userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      Navigator.push(context, '/home' as Route<Object?>);
+    } on FirebaseAuthException catch (ex) {
+      UiHelper.CustomAlertBox(context, ex.code.toString());
+    }
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -141,23 +161,24 @@ class SignUpPage extends StatelessWidget {
               SizedBox(height: 24.0),
               // Sign Up Button
               ElevatedButton(
-                onPressed: () => _signUp(context),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+            onPressed: () => signUp(context, _emailController.text.toString(), _passwordController.text.toString()),
+            style: ElevatedButton.styleFrom(
+            primary: Colors.white,
+            shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            ),
+            ),
+            child: Container(
+            padding: EdgeInsets.symmetric(vertical: 12.0),
+            child: Center(
+            child: Text(
+                    'Sign Up',
+            style: TextStyle(fontSize: 16.0, color: Color(0xFF004080)),
+                     ),
                   ),
-                ),
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 12.0),
-                  child: Center(
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(fontSize: 16.0, color: Color(0xFF004080)),
-                    ),
-                  ),
-                ),
+               ),
               ),
+
               SizedBox(height: 12.0),
               // Login Option
               TextButton(
