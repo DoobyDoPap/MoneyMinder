@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.budgetRoute: (context) => BudgetPage(),
         MyRoutes.invoiceRoute: (context) => InvoicePage(),
         MyRoutes.investmentRoute: (context) => InvestmentOptionsPage(),
-        MyRoutes.splashRoute: (context) => SplashScreenPage(),
+        MyRoutes.splashRoute: (context) => SplashScreen(),
         MyRoutes.stockRoute: (context) => StockMarketPage(),
         MyRoutes.stockRoute: (context) => MyStockMarketApp(),
         MyRoutes.fdRoute: (context) => FixedDepositPage(),
