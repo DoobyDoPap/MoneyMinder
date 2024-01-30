@@ -659,7 +659,7 @@ class _HomePageState extends State<HomePage> {
                                             height: 5.0,
                                           ),
                                           const Text(
-                                            'Your\nInsights',
+                                            'Your Notes',
                                             style: TextStyle(
                                               color: Colors.black,
                                               fontWeight: FontWeight.w400,
@@ -707,7 +707,7 @@ class _HomePageState extends State<HomePage> {
                                         height: 5.0,
                                       ),
                                       const Text(
-                                        'Split\nBills',
+                                        'Split Bills',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: Colors.black,

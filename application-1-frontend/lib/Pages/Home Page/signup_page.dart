@@ -57,10 +57,12 @@ class SignUpPage extends StatelessWidget {
           email: email,
           password: password,
         );
+        print("Account Created Successfully");
         Navigator.pushReplacementNamed(
             context, '/home'); // Use pushReplacementNamed instead of push
       } on FirebaseAuthException catch (ex) {
         UiHelper.CustomAlertBox(context, ex.code.toString());
+        print(ex.toString());
       }
     }
   }
@@ -163,7 +165,7 @@ class SignUpPage extends StatelessWidget {
                 ),
                 SizedBox(height: 24.0),
                 ElevatedButton(
-                  onPressed: () => signUp(
+                  onPressed: () async => await signUp(
                       Navigator.pushReplacementNamed(context, '/home')
                           as BuildContext,
                       _emailController.text.toString(),

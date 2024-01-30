@@ -31,6 +31,7 @@ import 'Pages/Home Page/login_page.dart';
 import 'Pages/Home Page/make_a_budget.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
