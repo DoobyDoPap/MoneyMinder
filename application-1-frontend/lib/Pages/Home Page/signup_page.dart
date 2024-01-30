@@ -52,7 +52,6 @@ class SignUpPage extends StatelessWidget {
     } else {
       UserCredential? userCredential;
       try {
-        userCredential =
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: email,
           password: password,
@@ -168,8 +167,8 @@ class SignUpPage extends StatelessWidget {
                   onPressed: () async => await signUp(
                       Navigator.pushReplacementNamed(context, '/home')
                           as BuildContext,
-                      _emailController.text.toString(),
-                      _passwordController.text.toString()),
+                      _emailController.text.trim(),
+                      _passwordController.text.trim()),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.white,
                     shape: RoundedRectangleBorder(

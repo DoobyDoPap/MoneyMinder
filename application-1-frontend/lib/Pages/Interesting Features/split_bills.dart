@@ -1,361 +1,455 @@
+// import 'package:finku_clone_slicing/Utils/main.dart';
 import 'package:flutter/material.dart';
 
-class Group {
-  final String name;
-  final List<Member> members;
-
-  Group({required this.name, required this.members});
+class SplitBillsPage extends StatefulWidget {
+  @override
+  SplitBillsPageState createState() => SplitBillsPageState();
 }
 
-class Member {
-  final String name;
-  double amountOwed;
+class SplitBillsPageState extends State<SplitBillsPage> {
 
-  Member({required this.name, this.amountOwed = 0.0});
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 18, 91, 150), //color1
+      body: Stack(
+        children: [
+          Positioned(
+            top: 90,
+            left: 30,
+            child: Text(
+              "Split Bills",
+              style: TextStyle(
+                color: Color.fromARGB(255, 227, 172, 7), //Color2
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
+            ),
+          ),
+          Positioned(
+            top: size.height * 0.05,
+            right: size.width * 0.05,
+            child: profilePicture(size),
+          ),
+          Positioned(
+            top: size.height * 0.2,
+            left: size.width * 0.05,
+            child: billedContainer(size),
+          ),
+          Positioned(
+            top: size.height * 0.56,
+            left: size.width * 0.05,
+            child: previousSplit(size),
+          ),
+          Positioned(
+            top: size.height * 0.31,
+            right: size.width * 0.09,
+            child: Material(
+              color: Color.fromARGB(255, 245, 221, 151),
+              elevation: 5,
+              borderRadius: BorderRadius.circular(20),
+              child: Container(
+                height: size.height / 3.6,
+                width: size.width / 5,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top: size.height * 0.01,
+                      left: size.width * 0.05,
+                      child: image(size, "assets/images/1.png"),
+                    ),
+                    Positioned(
+                      top: size.height * 0.09,
+                      left: size.width * 0.05,
+                      child: image(size, "assets/images/2.png"),
+                    ),
+                    Positioned(
+                      left: size.width * 0.05,
+                      bottom: size.height * 0.01,
+                      child: image(size, "assets/images/3.png"),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 20,
+            left: 25,
+            child: nearbyFriends(size),
+          ),
+          Positioned(
+            bottom: 165,
+            left: 22,
+            child: Material(
+              borderRadius: BorderRadius.circular(20),
+              color: Color.fromARGB(255, 227, 172, 7),
+              elevation: 10,
+              child: Container(
+                height: size.height / 11,
+                width: size.width / 5,
+                child: Icon(
+                  Icons.search,
+                  color: const Color.fromARGB(255, 18, 91, 150),
+                  size: 40,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget nearbyFriends(Size size) {
+    double containerHeight = size.height / 3.7;
+  double containerWidth = size.width / 1.15;
+
+  if (MediaQuery.of(context).size.width < 600) {
+    containerHeight = size.height / 4;
+    containerWidth = size.width / 1.5;
+  }
+    return Container(
+      height: size.height / 3.7,
+      width: size.width / 1.15,
+      decoration: BoxDecoration(
+        color: Color.fromARGB(255, 90, 146, 192),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Stack(
+        children: [
+          Positioned(
+            top: size.height * 0.02,
+            left: size.width * 0.35,
+            child: Text(
+              "Nearby Friends",
+              style: TextStyle(
+                color: Color.fromARGB(255, 227, 172, 7),
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 15,
+            right: 20,
+            child: Text(
+              "See all",
+              style: TextStyle(
+                color: Color.fromARGB(255, 227, 172, 7),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          Positioned(
+            top: size.height * 0.07,
+            left: size.width * 0.1,
+            child: previousParticipants(size, "assets/images/2.png", "user"),
+          ),
+          Positioned(
+            top: size.height * 0.07,
+            left: size.width * 0.375,
+            child: previousParticipants(size, "assets/images/1.png", "me"),
+          ),
+          Positioned(
+            top: size.height * 0.07,
+           right: size.width * 0.1,
+            child: previousParticipants(size, "assets/images/3.png", "user2"),
+          ),
+          Positioned(
+            bottom: 7,
+            left: 12,
+            child: Text(
+              "Recently \n Splits",
+              style: TextStyle(
+                color: Color.fromARGB(255, 227, 172, 7),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Positioned(
+  left: size.width * 0.1,   // Adjust the multiplier as needed
+  bottom: size.height * 0.02,  // Adjust the multiplier as needed
+  child: recentSplits(size, "assets/images/1.png", "user1"),
+  
+),
+Positioned(
+  left: size.width * 0.25,  // Adjust the multiplier as needed
+  bottom: size.height * 0.02,  // Adjust the multiplier as needed
+  child: recentSplits(size, "assets/images/2.png", "user2"),
+),
+Positioned(
+  right: size.width * 0.25,  // Adjust the multiplier as needed
+  bottom: size.height * 0.02,  // Adjust the multiplier as needed
+  child: recentSplits(size, "assets/images/1.png", "user3"),
+),
+Positioned(
+  right: size.width * 0.05,  // Adjust the multiplier as needed
+  bottom: size.height * 0.02,  // Adjust the multiplier as needed
+  child: recentSplits(size, "assets/images/3.png", "user4"),
+),
+
+        ],
+      ),
+    );
+  }
+
+  Widget recentSplits(Size size, String imageUrl, String name) {
+    return Container(
+      height: size.height / 10,
+      width: size.width / 5,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(
+            height: size.height / 20,
+            width: size.height / 20,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: AssetImage(imageUrl),
+              ),
+            ),
+          ),
+          Text(
+            name,
+            style: TextStyle(
+              color: Color.fromARGB(255, 227, 172, 7),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget previousParticipants(Size size, String imageUrl, String name) {
+    return Container(
+      height: size.height / 10,
+      width: size.width / 7,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+        color: const Color.fromARGB(255, 18, 91, 150),
+      ),
+      child: Column(
+        children: [
+          Container(
+            height: size.width < 600 ? size.height / 18 : size.height / 14.5,
+          width: size.width < 600 ? size.width / 18 : size.width / 14.5,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(imageUrl),
+              ),
+            ),
+          ),
+          Text(
+            name,
+            style: TextStyle(
+              color: Color.fromARGB(255, 227, 172, 7),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget previousSplit(Size size) {
+    return Container(
+      height: size.height / 9,
+      width: size.width / 1.2,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Color.fromARGB(255, 90, 146, 192),
+      ),
+      child: Stack(
+        children: [
+          Positioned(
+            left: 10,
+            top: 0.5,
+            bottom: 0.5,
+            child: Container(
+              height: size.height / 7,
+              width: size.width / 7,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: const Color.fromARGB(255, 18, 91, 150),
+              ),
+              child: Icon(
+                Icons.timer,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Positioned(
+            top: size.height * 0.03,
+            left: size.width * 0.3,
+            child: Text(
+              "Your Previous Splits",
+              style: TextStyle(
+                color: Color.fromARGB(255, 227, 172, 7),
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Positioned(
+            top: size.height * 0.06,
+            left: size.width * 0.3,
+            child: Text(
+              "678.56",
+              style: TextStyle(
+                color: Color.fromARGB(255, 227, 172, 7),
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget billedContainer(Size size) {
+    return Container(
+      height: size.height / 3,
+      width: size.width / 1.15,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Color.fromARGB(255, 227, 172, 7),
+      ),
+      child: Stack(
+        children: [
+          Positioned(
+            top: 30,
+            left: 30,
+            child: Text(
+              "Total Bill",
+              style: TextStyle(
+                color: const Color.fromARGB(255, 18, 91, 150),
+                fontSize: 21,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 50,
+            right: 30,
+            child: Text(
+              "Split With",
+              style: TextStyle(
+                color: const Color.fromARGB(255, 18, 91, 150),
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 55,
+            left: 30,
+            child: Text(
+              "750.86",
+              style: TextStyle(
+                color: const Color.fromARGB(255, 18, 91, 150),
+                fontSize: 34,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 50,
+            left: 30,
+            child: GestureDetector(
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => SecondScreen(),
+                ),
+              ),
+              child: Material(
+                color: const Color.fromARGB(255, 18, 91, 150),
+                elevation: 10,
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  height: size.height / 12,
+                  width: size.width / 3.5,
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Split Now",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 227, 172, 7),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget image(Size size, String imageUrl) {
+    return Container(
+      height: size.height / 10,
+      width: size.width / 10,
+      decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            image: AssetImage(imageUrl),
+            fit: BoxFit.contain,
+          )),
+    );
+  }
+
+  Widget profilePicture(Size size) {
+    return Container(
+      height: size.height / 9.5,
+      width: size.width / 4.5,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Color.fromARGB(255, 90, 146, 192),
+      ),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Container(
+              height: size.height / 19,
+              width: size.width / 5,
+              decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage("assets/images/1.png"))),
+            ),
+          ),
+          Text(
+            "User 1",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 227, 172, 7),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Second Screen"),
+      ),
+      // Add your SecondScreen body here,
+    );
+  }
 }
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Split Bills App',
-      theme: ThemeData(
-        buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)
-            .copyWith(secondary: Colors.deepOrange),
-      ),
-      home: GroupsPage(),
-    );
-  }
-}
-
-class GroupsPage extends StatefulWidget {
-  @override
-  _GroupsPageState createState() => _GroupsPageState();
-}
-
-class _GroupsPageState extends State<GroupsPage> {
-  List<Group> groups = [
-    Group(
-      name: 'Friends Outing',
-      members: [
-        Member(name: 'Bisht'),
-        Member(name: 'Pinto Bhai'),
-        Member(name: 'Dubey'),
-      ],
-    ),
-    Group(
-      name: 'Roommates',
-      members: [
-        Member(name: 'Adi'),
-        Member(name: 'Abhinav'),
-        Member(name: 'Sahil'),
-      ],
-    ),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Groups'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Your Groups',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 16),
-            Expanded(
-              child: ListView.builder(
-                itemCount: groups.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    elevation: 3,
-                    child: ListTile(
-                      title: Text(groups[index].name),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => GroupDetailsPage(
-                              group: groups[index],
-                              onDeleteGroup: () {
-                                _deleteGroup(index);
-                              },
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                },
-              ),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                _showAddGroupDialog(context);
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Colors.deepOrange, // Change this color
-              ),
-              child: Text('Create Group'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _showAddGroupDialog(BuildContext context) {
-    TextEditingController nameController = TextEditingController();
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Create Group'),
-        content: TextField(
-          controller: nameController,
-          decoration: InputDecoration(labelText: 'Enter Group Name'),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () {
-              _addGroup(nameController.text);
-              Navigator.pop(context);
-            },
-            child: Text('Create'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _addGroup(String name) {
-    if (name.isNotEmpty) {
-      setState(() {
-        groups.add(Group(name: name, members: []));
-      });
-    }
-  }
-
-  void _deleteGroup(int index) {
-    setState(() {
-      groups.removeAt(index);
-    });
-  }
-}
-
-class GroupDetailsPage extends StatefulWidget {
-  final Group group;
-  final VoidCallback onDeleteGroup;
-
-  GroupDetailsPage({required this.group, required this.onDeleteGroup});
-
-  @override
-  _GroupDetailsPageState createState() => _GroupDetailsPageState();
-}
-
-class _GroupDetailsPageState extends State<GroupDetailsPage> {
-  void _showAddFriendDialog(BuildContext context) {
-    TextEditingController nameController = TextEditingController();
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Add Friend'),
-        content: TextField(
-          controller: nameController,
-          decoration: InputDecoration(labelText: 'Enter Friend\'s Name'),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () {
-              _addFriend(nameController.text);
-              Navigator.pop(context);
-            },
-            child: Text('Add'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showManualSplitDialog(BuildContext context) {
-    double amount = 0.0;
-    List<Member> selectedFriends = [];
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Split Amount Manually'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              decoration: InputDecoration(labelText: 'Enter Amount'),
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                amount = double.tryParse(value) ?? 0.0;
-              },
-            ),
-            Wrap(
-              children: widget.group.members.map((Member member) {
-                return CheckboxListTile(
-                  title: Text(member.name),
-                  value: selectedFriends.contains(member),
-                  onChanged: (bool? value) {
-                    setState(() {
-                      if (value!) {
-                        selectedFriends.add(member);
-                      } else {
-                        selectedFriends.remove(member);
-                      }
-                    });
-                  },
-                );
-              }).toList(),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () {
-              _splitAmountManually(amount, selectedFriends);
-              Navigator.pop(context);
-            },
-            child: Text('Split'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _splitAmountManually(double amount, List<Member> selectedFriends) {
-    if (amount <= 0 || selectedFriends.isEmpty) {
-      return;
-    }
-
-    double share = amount / selectedFriends.length;
-    for (Member friend in selectedFriends) {
-      friend.amountOwed += share;
-    }
-  }
-
-  void _addFriend(String name) {
-    if (name.isNotEmpty) {
-      setState(() {
-        widget.group.members.add(Member(name: name));
-      });
-    }
-  }
-
-  void _deleteFriend(Member friend) {
-    setState(() {
-      widget.group.members.remove(friend);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.group.name),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Members',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 16),
-            Column(
-              children: widget.group.members.map((Member member) {
-                return Card(
-                  elevation: 3,
-                  child: ListTile(
-                    title: Text(member.name),
-                    subtitle: Text(
-                      'Amount Owed: ₹${member.amountOwed.toStringAsFixed(2)}',
-                    ),
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete),
-                      onPressed: () {
-                        _deleteFriend(member);
-                      },
-                    ),
-                  ),
-                );
-              }).toList(),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                _showAddFriendDialog(context);
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Colors.deepOrange, // Change this color
-              ),
-              child: Text('Add Friend'),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'Expenses',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                _showManualSplitDialog(context);
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Colors.deepOrange, // Change this color
-              ),
-              child: Text('Split Amount Manually'),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                widget.onDeleteGroup();
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Colors.red,
-              ),
-              child: Text('Delete Group'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: SplitBillsPage(),
+  ));
 }

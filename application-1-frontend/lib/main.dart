@@ -21,6 +21,7 @@ import 'package:MoneyMinder/Pages/Investment/real_estate_page.dart';
 import 'package:MoneyMinder/Pages/Investment/sip_page.dart';
 import 'package:MoneyMinder/Pages/Investment/stock_market_page.dart';
 import 'package:MoneyMinder/Utils/routes.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,8 @@ import 'Pages/Home Page/login_page.dart';
 import 'Pages/Home Page/make_a_budget.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -63,7 +65,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.sipRoute: (context) => SIPPage(),
         MyRoutes.achievementRoute: (context) => AchievementPage(),
         MyRoutes.transactionRoute: (context) => TransactionHistoryPage(),
-        MyRoutes.splitRoute: (context) => GroupsPage(),
+        MyRoutes.splitbillsRoute:(context) => SplitBillsPage(),
         MyRoutes.targetRoute: (context) => TargetPage(),
         MyRoutes.activateRoute: (context) => LoanApplicationPage(),
         MyRoutes.learnRoute: (context) => UserGuidePage(),
