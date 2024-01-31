@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_web_libraries_in_flutter, unused_import
+
 import 'package:MoneyMinder/Pages/Home%20Page/budget_data/list_budget.dart';
 import 'package:flutter/material.dart';
 import 'dart:js' as js; // Import dart:js with an alias

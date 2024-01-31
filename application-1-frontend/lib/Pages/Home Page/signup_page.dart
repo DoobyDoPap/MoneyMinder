@@ -1,11 +1,10 @@
 // ignore_for_file: avoid_web_libraries_in_flutter, unused_import, unused_local_variable
 
-import 'dart:js';
-
 import 'package:MoneyMinder/Pages/Home%20Page/home_page.dart';
 import 'package:MoneyMinder/Pages/Home%20Page/login_page.dart';
 import 'package:MoneyMinder/Pages/Home%20Page/uihelper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -13,52 +12,28 @@ class SignUpPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  void _signUp(BuildContext context) {
-    if (_usernameController.text.isNotEmpty &&
-        _emailController.text.isNotEmpty &&
-        _passwordController.text.isNotEmpty) {
-      // Your signup logic here
-      // You might want to navigate to the home page or show a confirmation message
-      Navigator.pop(context); // Close the signup page
+  Future<void> signUp(BuildContext context, String email, String password,
+      String username) async {
+    if (email.isEmpty || password.isEmpty || username.isEmpty) {
+      UiHelper.CustomAlertBox(context, "Enter all required fields");
     } else {
-      // Show a pop-up message if any of the fields is not entered
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Error'),
-            content: Text('Please enter all required information.'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text('OK', style: TextStyle(color: Colors.red)),
-              ),
-            ],
-          );
-        },
-      );
-    }
-  }
-
-  void _goToLogin(BuildContext context) {
-    Navigator.pushNamed(context, '/login');
-  }
-
-  signUp(BuildContext context, String email, String password) async {
-    if (email.isEmpty || password.isEmpty) {
-      UiHelper.CustomAlertBox(context, "Enter Required Fields");
-    } else {
-      UserCredential? userCredential;
       try {
-            await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: email,
-          password: password,
-        );
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: email, password: password);
+
+        // After successful registration, update user profile with username
+        await userCredential.user?.updateProfile(displayName: username);
+
+        // You can also store additional user data in Firebase Firestore or Realtime Database
+        // For example, storing user's username in Firestore
+        // FirebaseFirestore.instance.collection('users').doc(userCredential.user?.uid).set({
+        //   'username': username,
+        // });
+
         print("Account Created Successfully");
-        Navigator.pushReplacementNamed(
-            context, '/home'); // Use pushReplacementNamed instead of push
+
+        // Navigate to home page
+        Navigator.pushReplacementNamed(context, '/home');
       } on FirebaseAuthException catch (ex) {
         UiHelper.CustomAlertBox(context, ex.code.toString());
         print(ex.toString());
@@ -165,10 +140,11 @@ class SignUpPage extends StatelessWidget {
                 SizedBox(height: 24.0),
                 ElevatedButton(
                   onPressed: () async => await signUp(
-                      Navigator.pushReplacementNamed(context, '/home')
-                          as BuildContext,
-                      _emailController.text.trim(),
-                      _passwordController.text.trim()),
+                    context,
+                    _emailController.text.trim(),
+                    _passwordController.text.trim(),
+                    _usernameController.text.trim(),
+                  ),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.white,
                     shape: RoundedRectangleBorder(
@@ -201,18 +177,23 @@ class SignUpPage extends StatelessWidget {
       ),
     );
   }
+
+  void _goToLogin(BuildContext context) {
+    Navigator.pushNamed(context, '/login');
+  }
 }
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(
     MaterialApp(
-      initialRoute: '/signup', // Set your initial route
+      initialRoute: '/signup',
       routes: {
         '/signup': (context) => SignUpPage(),
-        '/home': (context) =>
-            HomePage(), // Replace 'HomePage' with the actual home page widget
-        '/login': (context) =>
-            LoginPage(), // Replace 'LoginPage' with the actual login page widget
+        '/home': (context) => HomePage(),
+        '/login': (context) => LoginPage(),
       },
     ),
   );

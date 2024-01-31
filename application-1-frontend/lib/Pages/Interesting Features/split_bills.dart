@@ -1,4 +1,3 @@
-// import 'package:finku_clone_slicing/Utils/main.dart';
 import 'package:flutter/material.dart';
 
 class SplitBillsPage extends StatefulWidget {
@@ -7,13 +6,14 @@ class SplitBillsPage extends StatefulWidget {
 }
 
 class SplitBillsPageState extends State<SplitBillsPage> {
+  List<Group> groups = [];
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 18, 91, 150), //color1
+      backgroundColor: const Color.fromARGB(255, 18, 91, 150),
       body: Stack(
         children: [
           Positioned(
@@ -22,7 +22,7 @@ class SplitBillsPageState extends State<SplitBillsPage> {
             child: Text(
               "Split Bills",
               style: TextStyle(
-                color: Color.fromARGB(255, 227, 172, 7), //Color2
+                color: Color.fromARGB(255, 227, 172, 7),
                 fontWeight: FontWeight.bold,
                 fontSize: 30,
               ),
@@ -98,6 +98,40 @@ class SplitBillsPageState extends State<SplitBillsPage> {
               ),
             ),
           ),
+          Positioned(
+            top: 80,
+            left: size.width * 0.35,
+            child: ElevatedButton(
+              onPressed: () {
+                _showAddGroupDialog();
+              },
+              child: Text("Add Group"),
+            ),
+          ),
+          Positioned(
+            top: 80,
+            left: size.width * 0.5,
+            child: ElevatedButton(
+              onPressed: () {
+                _showAddUserDialog();
+              },
+              child: Text("Add User"),
+            ),
+          ),
+          Positioned(
+            top: 10,
+            left: 10,
+            child: IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+                size: 30,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -105,12 +139,12 @@ class SplitBillsPageState extends State<SplitBillsPage> {
 
   Widget nearbyFriends(Size size) {
     double containerHeight = size.height / 3.7;
-  double containerWidth = size.width / 1.15;
+    double containerWidth = size.width / 1.15;
 
-  if (MediaQuery.of(context).size.width < 600) {
-    containerHeight = size.height / 4;
-    containerWidth = size.width / 1.5;
-  }
+    if (MediaQuery.of(context).size.width < 600) {
+      containerHeight = size.height / 4;
+      containerWidth = size.width / 1.5;
+    }
     return Container(
       height: size.height / 3.7,
       width: size.width / 1.15,
@@ -155,7 +189,7 @@ class SplitBillsPageState extends State<SplitBillsPage> {
           ),
           Positioned(
             top: size.height * 0.07,
-           right: size.width * 0.1,
+            right: size.width * 0.1,
             child: previousParticipants(size, "assets/images/3.png", "user2"),
           ),
           Positioned(
@@ -170,27 +204,25 @@ class SplitBillsPageState extends State<SplitBillsPage> {
             ),
           ),
           Positioned(
-  left: size.width * 0.1,   // Adjust the multiplier as needed
-  bottom: size.height * 0.02,  // Adjust the multiplier as needed
-  child: recentSplits(size, "assets/images/1.png", "user1"),
-  
-),
-Positioned(
-  left: size.width * 0.25,  // Adjust the multiplier as needed
-  bottom: size.height * 0.02,  // Adjust the multiplier as needed
-  child: recentSplits(size, "assets/images/2.png", "user2"),
-),
-Positioned(
-  right: size.width * 0.25,  // Adjust the multiplier as needed
-  bottom: size.height * 0.02,  // Adjust the multiplier as needed
-  child: recentSplits(size, "assets/images/1.png", "user3"),
-),
-Positioned(
-  right: size.width * 0.05,  // Adjust the multiplier as needed
-  bottom: size.height * 0.02,  // Adjust the multiplier as needed
-  child: recentSplits(size, "assets/images/3.png", "user4"),
-),
-
+            left: size.width * 0.1,
+            bottom: size.height * 0.02,
+            child: recentSplits(size, "assets/images/1.png", "user1"),
+          ),
+          Positioned(
+            left: size.width * 0.25,
+            bottom: size.height * 0.02,
+            child: recentSplits(size, "assets/images/2.png", "user2"),
+          ),
+          Positioned(
+            right: size.width * 0.25,
+            bottom: size.height * 0.02,
+            child: recentSplits(size, "assets/images/1.png", "user3"),
+          ),
+          Positioned(
+            right: size.width * 0.05,
+            bottom: size.height * 0.02,
+            child: recentSplits(size, "assets/images/3.png", "user4"),
+          ),
         ],
       ),
     );
@@ -236,7 +268,7 @@ Positioned(
         children: [
           Container(
             height: size.width < 600 ? size.height / 18 : size.height / 14.5,
-          width: size.width < 600 ? size.width / 18 : size.width / 14.5,
+            width: size.width < 600 ? size.width / 18 : size.width / 14.5,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(imageUrl),
@@ -419,7 +451,8 @@ Positioned(
               height: size.height / 19,
               width: size.width / 5,
               decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage("assets/images/1.png"))),
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/1.png"))),
             ),
           ),
           Text(
@@ -433,6 +466,101 @@ Positioned(
       ),
     );
   }
+
+  void _showAddGroupDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        String groupName = '';
+
+        return AlertDialog(
+          title: Text('Add Group'),
+          content: TextField(
+            onChanged: (value) {
+              groupName = value;
+            },
+            decoration: InputDecoration(
+              hintText: 'Enter Group Name',
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (groupName.isNotEmpty) {
+                  setState(() {
+                    groups.add(Group(name: groupName, users: []));
+                  });
+                  Navigator.of(context).pop();
+                }
+              },
+              child: Text('Add'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showAddUserDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        String userName = '';
+
+        return AlertDialog(
+          title: Text('Add User'),
+          content: TextField(
+            onChanged: (value) {
+              userName = value;
+            },
+            decoration: InputDecoration(
+              hintText: 'Enter User Name',
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (userName.isNotEmpty) {
+                  setState(() {
+                    groups.forEach((group) {
+                      group.users.add(User(name: userName));
+                    });
+                  });
+                  Navigator.of(context).pop();
+                }
+              },
+              child: Text('Add'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class Group {
+  String name;
+  List<User> users;
+
+  Group({required this.name, required this.users});
+}
+
+class User {
+  String name;
+
+  User({required this.name});
 }
 
 class SecondScreen extends StatelessWidget {
