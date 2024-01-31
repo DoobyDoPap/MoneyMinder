@@ -66,11 +66,12 @@ class MyApp extends StatelessWidget {
         MyRoutes.sipRoute: (context) => SIPPage(),
         MyRoutes.achievementRoute: (context) => AchievementPage(),
         MyRoutes.transactionRoute: (context) => TransactionHistoryPage(),
-        MyRoutes.splitbillsRoute:(context) => SplitBillsPage(),
+        MyRoutes.splitbillsRoute: (context) => SplitBillsPage(),
         MyRoutes.targetRoute: (context) => TargetPage(),
         MyRoutes.activateRoute: (context) => LoanApplicationPage(),
         MyRoutes.learnRoute: (context) => UserGuidePage(),
         MyRoutes.signupRoute: (context) => SignUpPage(),
+        // MyRoutes._homePage: (context) => _HomePage(),
       },
     );
   }
