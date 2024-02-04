@@ -1,303 +1,283 @@
-// ignore_for_file: avoid_web_libraries_in_flutter, unused_import
-
-import 'package:MoneyMinder/Pages/Home%20Page/budget_data/list_budget.dart';
 import 'package:flutter/material.dart';
-import 'dart:js' as js; // Import dart:js with an alias
 
-class BudgetPage extends StatelessWidget {
-  const BudgetPage({Key? key}) : super(key: key);
+void main() {
+  runApp(MyBudgetApp());
+}
+
+class Expense {
+  String name;
+  double amount;
+
+  Expense(this.name, this.amount);
+}
+
+class MyBudgetApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Budget App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: BudgetPage(),
+    );
+  }
+}
+
+class BudgetPage extends StatefulWidget {
+  @override
+  _BudgetPageState createState() => _BudgetPageState();
+}
+
+class _BudgetPageState extends State<BudgetPage> {
+  double? monthlyBudget;
+  String currencySymbol = '₹';
+  List<Expense> expenses = [];
+
+  void _showAddExpenseDialog() {
+    TextEditingController nameController = TextEditingController();
+    TextEditingController amountController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Add Expense'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: nameController,
+                decoration: InputDecoration(labelText: 'Expense Name'),
+              ),
+              TextField(
+                controller: amountController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(labelText: 'Amount'),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                String name = nameController.text;
+                double amount = double.tryParse(amountController.text) ?? 0.0;
+
+                if (name.isNotEmpty && amount > 0) {
+                  setState(() {
+                    expenses.add(Expense(name, amount));
+                  });
+                }
+
+                Navigator.of(context).pop();
+              },
+              child: Text('Add'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showEditExpenseDialog(Expense expense) {
+    TextEditingController nameController =
+        TextEditingController(text: expense.name);
+    TextEditingController amountController =
+        TextEditingController(text: expense.amount.toString());
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Edit Expense'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: nameController,
+                decoration: InputDecoration(labelText: 'Expense Name'),
+              ),
+              TextField(
+                controller: amountController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(labelText: 'Amount'),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                String name = nameController.text;
+                double amount = double.tryParse(amountController.text) ?? 0.0;
+
+                if (name.isNotEmpty && amount > 0) {
+                  setState(() {
+                    // Update the existing expense
+                    expense.name = name;
+                    expense.amount = amount;
+                  });
+                }
+
+                Navigator.of(context).pop();
+              },
+              child: Text('Save'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _deleteExpense(int index) {
+    setState(() {
+      expenses.removeAt(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    double totalExpenses =
+        expenses.fold(0, (prev, element) => (prev + element.amount));
+
+    // Calculate the percentage of budget spent
+    double percentageSpent = (totalExpenses / (monthlyBudget ?? 1.0)) * 100;
+
+    // Check if the user has spent more than 90% of the budget
+    if (monthlyBudget != null && percentageSpent > 90) {
+      // Show a notification
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Budget Warning'),
+            content: Text(
+                'You have spent more than 90% of your budget. Spend carefully!'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.43,
-                child: _buildBudget(context),
+      appBar: AppBar(
+        title: Text('My Budget'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Monthly Budget',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Transaction History',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        color: Colors.black,
+            TextField(
+              onChanged: (value) {
+                setState(() {
+                  monthlyBudget = double.tryParse(value) ?? 0.0;
+                });
+              },
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Enter Monthly Budget'),
+            ),
+            SizedBox(height: 32),
+            Text(
+              'Expenses',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16),
+            if (expenses.isEmpty)
+              Text('No expenses added yet.')
+            else
+              Expanded(
+                child: ListView.builder(
+                  itemCount: expenses.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(expenses[index].name),
+                      subtitle: Text(
+                          '$currencySymbol${expenses[index].amount.toStringAsFixed(2)}'),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.edit),
+                            onPressed: () {
+                              _showEditExpenseDialog(expenses[index]);
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.delete),
+                            onPressed: () {
+                              _deleteExpense(index);
+                            },
+                          ),
+                        ],
                       ),
-                    ),
-                    Text(
-                      'See all',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
+                      onTap: () {
+                        // Add navigation to a detailed view or edit page for this expense
+                      },
+                    );
+                  },
                 ),
               ),
+            SizedBox(height: 16),
+            Text(
+              'Total Expenses: $currencySymbol${totalExpenses.toStringAsFixed(2)}',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return ListTile(
-                    leading: ClipRRect(
-                      borderRadius: BorderRadius.circular(5),
-                      child: Image.asset(
-                        'assets/images/${geter()[index].image!}',
-                        height: 40,
-                      ),
-                    ),
-                    title: Text(
-                      geter()[index].name!,
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    subtitle: Text(
-                      geter()[index].time!,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    trailing: Text(
-                      geter()[index].fee!,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 19,
-                        color: geter()[index].buy! ? Colors.red : Colors.green,
-                      ),
-                    ),
-                  );
-                },
-                childCount: geter().length,
+            SizedBox(height: 16),
+            if (monthlyBudget != null)
+              LinearProgressIndicator(
+                value: totalExpenses / monthlyBudget!,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                backgroundColor: Colors.grey,
+              ),
+            SizedBox(height: 16),
+            Text(
+              'Remaining Budget: $currencySymbol${(monthlyBudget ?? 0.0) - totalExpenses}',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _showAddExpenseDialog();
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
-
-  Widget _buildBudget(BuildContext context) {
-    return Stack(
-      children: [
-        Column(
-          children: [
-            Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.3,
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 18, 88, 102),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-              ),
-              child: Stack(
-                children: [
-                  Positioned(
-                    top: 10,
-                    right: 15,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(7),
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        color: Color.fromARGB(255, 66, 107, 141),
-                        child: Icon(
-                          Icons.notification_add_outlined,
-                          size: 30,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 30, left: 30),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Hey user!',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const Text(
-                          'Create Budget',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        Positioned(
-          top: 100,
-          left: 37,
-          child: Container(
-            height: 170,
-            width: MediaQuery.of(context).size.width > 600 ? 400 : 400,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromARGB(255, 11, 80, 88),
-                  offset: Offset(0, 6),
-                  blurRadius: 12,
-                  spreadRadius: 6,
-                ),
-              ],
-              color: const Color.fromARGB(255, 9, 52, 87),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Column(
-              children: [
-                SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Total Balance',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Icon(
-                        Icons.more_horiz,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 7),
-                Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Rs. 1001',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 25),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 13,
-                            backgroundColor: Color.fromARGB(255, 66, 107, 141),
-                            child: Icon(
-                              Icons.arrow_downward,
-                              color: Colors.white,
-                              size: 19,
-                            ),
-                          ),
-                          SizedBox(width: 7),
-                          Text(
-                            'Income',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 13,
-                            backgroundColor: Color.fromARGB(255, 66, 107, 141),
-                            child: Icon(
-                              Icons.arrow_upward,
-                              color: Colors.white,
-                              size: 19,
-                            ),
-                          ),
-                          SizedBox(width: 7),
-                          Text(
-                            'Expense',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 6),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Rs. 998',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 17,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        'Rs. 458',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 17,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: BudgetPage(),
-  ));
 }
