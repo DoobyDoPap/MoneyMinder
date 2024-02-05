@@ -180,6 +180,15 @@ class _BudgetPageState extends State<BudgetPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('My Budget'),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue, Colors.green],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -200,7 +209,12 @@ class _BudgetPageState extends State<BudgetPage> {
                 });
               },
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: 'Enter Monthly Budget'),
+              decoration: InputDecoration(
+                labelText: 'Enter Monthly Budget',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.attach_money),
+              ),
+              style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 32),
             Text(
@@ -256,10 +270,20 @@ class _BudgetPageState extends State<BudgetPage> {
             ),
             SizedBox(height: 16),
             if (monthlyBudget != null)
-              LinearProgressIndicator(
-                value: totalExpenses / monthlyBudget!,
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
-                backgroundColor: Colors.grey,
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  gradient: LinearGradient(
+                    colors: [Colors.blue, Colors.green],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+                child: LinearProgressIndicator(
+                  value: totalExpenses / monthlyBudget!,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  backgroundColor: Colors.transparent,
+                ),
               ),
             SizedBox(height: 16),
             Text(
@@ -277,6 +301,7 @@ class _BudgetPageState extends State<BudgetPage> {
           _showAddExpenseDialog();
         },
         child: Icon(Icons.add),
+        backgroundColor: Colors.blue,
       ),
     );
   }
