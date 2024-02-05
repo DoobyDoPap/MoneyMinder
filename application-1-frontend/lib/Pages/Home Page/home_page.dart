@@ -1179,47 +1179,52 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            children: [
-                              const Text(
-                                '💡 Insight About You',
-                                style: TextStyle(
-                                  color: black,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10.0,
-                              ),
-                              Container(
-                                alignment: Alignment.center,
-                                padding: const EdgeInsets.only(left: 2),
-                                height: 25.0,
-                                width: 50,
-                                decoration: const BoxDecoration(
-                                  color: red,
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(
-                                      16.0,
-                                    ),
-                                  ),
-                                ),
-                                child: const Text(
-                                  'New',
+                          GestureDetector(
+                            onTap: () {
+                              // Define the action to be taken when the button is pressed
+                              // For example, you can navigate to another screen or perform some other action.
+                              print("Button Pressed!");
+                            },
+                            child: Row(
+                              children: [
+                                const Text(
+                                  '💡 Insight About You',
                                   style: TextStyle(
-                                    color: white,
-                                    fontSize: 12,
+                                    color: Colors.black,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                              ),
-                              const Spacer(),
-                              const Icon(
-                                Icons.arrow_forward_ios,
-                                size: 18,
-                              ),
-                            ],
+                                const SizedBox(
+                                  width: 10.0,
+                                ),
+                                Container(
+                                  alignment: Alignment.center,
+                                  padding: const EdgeInsets.only(left: 2),
+                                  height: 25.0,
+                                  width: 50,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(16.0),
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    'New',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                const Spacer(),
+                                const Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 18,
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             height: 15.0,
