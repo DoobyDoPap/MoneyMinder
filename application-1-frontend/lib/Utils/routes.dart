@@ -16,6 +16,7 @@ class MyRoutes {
   static String achievementRoute = "/achievement";
   static String transactionRoute = "/transaction";
   static String splitbillsRoute = "/split";
+  static String split_billsRoute = "/split_bills";
   static String targetRoute = "/target";
   static String activateRoute = "/activate";
   static String learnRoute = "/learn";

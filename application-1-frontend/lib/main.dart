@@ -12,6 +12,7 @@ import 'package:MoneyMinder/Pages/Home%20Page/splash_page.dart';
 import 'package:MoneyMinder/Pages/Home%20Page/target_page.dart';
 import 'package:MoneyMinder/Pages/Interesting%20Features/split_bills.dart';
 import 'package:MoneyMinder/Pages/Interesting%20Features/achievements_page.dart';
+import 'package:MoneyMinder/Pages/Interesting%20Features/split_bills_1.dart';
 import 'package:MoneyMinder/Pages/Investment/bonds_page.dart';
 import 'package:MoneyMinder/Pages/Investment/crypto_market_page.dart';
 import 'package:MoneyMinder/Pages/Investment/fixed_deposits.dart';
@@ -67,10 +68,12 @@ class MyApp extends StatelessWidget {
         MyRoutes.achievementRoute: (context) => AchievementPage(),
         MyRoutes.transactionRoute: (context) => TransactionHistoryPage(),
         MyRoutes.splitbillsRoute: (context) => SplitBillsPage(),
+        MyRoutes.split_billsRoute: (context) => SplitBills_Page(),
         MyRoutes.targetRoute: (context) => TargetPage(),
         MyRoutes.activateRoute: (context) => LoanApplicationPage(),
         MyRoutes.learnRoute: (context) => UserGuidePage(),
         MyRoutes.signupRoute: (context) => SignUpPage(),
+
         // MyRoutes._homePage: (context) => _HomePage(),
       },
     );

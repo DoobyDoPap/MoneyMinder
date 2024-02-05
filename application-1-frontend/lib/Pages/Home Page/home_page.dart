@@ -691,7 +691,7 @@ class _HomePageState extends State<HomePage> {
                                     // Handle Split Bills button press
                                     print("Split Bills button pressed!");
                                     Navigator.pushReplacementNamed(
-                                        context, '/split');
+                                        context, '/split_bills');
                                   },
                                   child: Column(
                                     children: [

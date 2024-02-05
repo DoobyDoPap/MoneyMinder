@@ -11,6 +11,16 @@ class SignUpPage extends StatelessWidget {
   final TextEditingController _passwordController = TextEditingController();
 
   void _signUp(BuildContext context) async {
+    // Validate email and password
+    if (!_isValidEmail(_emailController.text) ||
+        !_isValidPassword(_passwordController.text)) {
+      _showErrorDialog(
+        context,
+        'Please enter a valid email and password.',
+      );
+      return;
+    }
+
     try {
       UserCredential userCredential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -18,7 +28,7 @@ class SignUpPage extends StatelessWidget {
         password: _passwordController.text,
       );
 
-      // Save user details to Firestore
+      // Save additional user details to Firestore
       await FirebaseFirestore.instance
           .collection('users')
           .doc(userCredential.user!.uid)
@@ -40,6 +50,18 @@ class SignUpPage extends StatelessWidget {
     } catch (e) {
       _showErrorDialog(context, 'Failed to sign up. Please try again.');
     }
+  }
+
+  bool _isValidEmail(String email) {
+    // Add your email validation logic here
+    // For simplicity, just checking if it contains '@'
+    return email.contains('@');
+  }
+
+  bool _isValidPassword(String password) {
+    // Add your password validation logic here
+    // For simplicity, just checking if it's not empty
+    return password.isNotEmpty;
   }
 
   void _navigateToLogin(BuildContext context) {
