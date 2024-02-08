@@ -21,6 +21,7 @@ import 'package:MoneyMinder/Pages/Investment/mutual_fund_page.dart';
 import 'package:MoneyMinder/Pages/Investment/real_estate_page.dart';
 import 'package:MoneyMinder/Pages/Investment/sip_page.dart';
 import 'package:MoneyMinder/Pages/Investment/stock_market_page.dart';
+import 'package:MoneyMinder/Utils/firebase_options.dart';
 import 'package:MoneyMinder/Utils/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -33,9 +34,9 @@ import 'Pages/Home Page/investment_page.dart';
 import 'Pages/Home Page/login_page.dart';
 import 'Pages/Home Page/make_a_budget.dart';
 
-void main() {
+main() async {
   // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MyApp());
 }
 

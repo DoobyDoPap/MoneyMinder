@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  void _signIn(BuildContext context) {
+  void _signIn(BuildContext context) async {
     if (_usernameController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty) {
       // Your login logic here
+
+      try {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: _usernameController.text.trim(),
+            password: _passwordController.text.trim());
+      } catch (e) {
+        print(e.toString());
+      }
+
       Navigator.pushReplacementNamed(context, '/home');
     } else {
       // Show a pop-up message if either username or password is not entered
@@ -153,10 +163,10 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: LoginPage(),
-    ),
-  );
-}
+// void main() {
+//   runApp(
+//     MaterialApp(
+//       home: LoginPage(),
+//     ),
+//   );
+// }
