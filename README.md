@@ -35,19 +35,19 @@
 
 ## 📝Description
 
-This project provides a comprehensive guidance to the user by providing them insights into potential return, Sharpe ratio and Volatility ratio of their preferred stocks within a specified time period. This tool would assist user in making wise decisions by investing into right tickers at right time and build their assests.
+Introducing our all-in-one finance management app, MoneyMinder. Seamlessly tracking your expenses, monitoring finances, receive investment suggestions, and set personalized savings goals. Take charge of your financial well-being, effortlessly navigate your financial journey, and pave the way towards a secure future.
 
 #### Key Features
 
 <!-- 1. Login/Signup is the key feature that aids in making user's searches and interests private. -->
 
-1. *Portfolio Optimization*: The main aim is to display the Sharpe , Volatility ratio of the input tickers and displaying the weights of the tickers.
+1. *Budget Tracker*:The go-to solution for effortless budget management. With our app, users can easily create, track, and manage their budgets with precision. Stay on top of your spending, set financial goals, and make informed decisions to achieve financial success. 
 
-2. *Company's Stock Price*: Before thinking to invest, a user can get enlightened about a particular company's stock history of past 5 years, by merely typing the comapny symbol name in the search bar.
+2. *Investment Options*:The comprehensive tool for exploring investment opportunities. With our app, users can discover personalized investment suggestions tailored to their financial goals and risk tolerance. From stocks and mutual funds to real estate and cryptocurrencies, explore a wide range of investment avenues to grow your wealth.
 
-3. *Latest News*: For better convenience, our platform also facilitates latest and trending finance, business news, helping users take wise decisions.
+3. *Target goal*: Your ultimate companion for achieving your financial goals. With our app, users can easily set personalized savings targets to reach a specific amount by a designated time frame.
 
-4. *Financial terms*: Along with all these, the platform offers a slideshow of images related to investment advice, schemes and financial literacy.
+
 
 ## 🔗Links
 
