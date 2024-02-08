@@ -1,142 +1,108 @@
-// ignore_for_file: unused_field
-
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(SplitBillsApp());
 }
 
-class MyApp extends StatelessWidget {
+class SplitBillsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Split Bills',
       theme: ThemeData(
-        primaryColor: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
-            .copyWith(secondary: Colors.blueAccent),
+        primarySwatch: Colors.blue,
+        fontFamily: 'Roboto',
       ),
-      home: SplitBills_Page(),
+      home: SplitBillsPage(),
     );
   }
 }
 
-class SplitBills_Page extends StatefulWidget {
+class SplitBillsPage extends StatefulWidget {
   @override
   _SplitBillsPageState createState() => _SplitBillsPageState();
 }
 
-class _SplitBillsPageState extends State<SplitBills_Page> {
-  TextEditingController _groupNameController = TextEditingController();
-  TextEditingController _numberOfUsersController = TextEditingController();
-  TextEditingController _memberNameController = TextEditingController();
+class _SplitBillsPageState extends State<SplitBillsPage> {
+  int _numberOfPeople = 2;
+  double _totalAmount = 0;
+  double _splitAmount = 0;
 
-  String _groupName = '';
-  int _numberOfUsers = 1;
-  List<String> _groupMembers = [];
+  final _currencyFormat = NumberFormat.currency(locale: 'en_IN', symbol: '₹');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Split Bills'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.home),
-            onPressed: () {
-              Navigator.pushReplacementNamed(context, '/home');
-            },
-          ),
-        ],
+        centerTitle: true,
       ),
-      body: Container(
+      body: Padding(
         padding: EdgeInsets.all(16.0),
-        color: Colors.blueGrey[100],
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              'Group Details:',
-              style: TextStyle(fontSize: 18),
-            ),
-            TextField(
-              controller: _groupNameController,
+            TextFormField(
               decoration: InputDecoration(
-                hintText: 'Enter group name',
-                labelText: 'Group Name',
+                labelText: 'Total Amount',
+                prefixIcon: Icon(Icons.attach_money),
+                border: OutlineInputBorder(),
               ),
-            ),
-            SizedBox(height: 8),
-            TextField(
-              controller: _numberOfUsersController,
               keyboardType: TextInputType.number,
+              style: TextStyle(fontSize: 18.0),
+              onChanged: (value) {
+                setState(() {
+                  _totalAmount = double.tryParse(value) ?? 0;
+                });
+              },
+            ),
+            SizedBox(height: 16.0),
+            TextFormField(
               decoration: InputDecoration(
-                hintText: 'Enter number of users',
-                labelText: 'Number of Users',
+                labelText: 'Number of People',
+                prefixIcon: Icon(Icons.people),
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.number,
+              style: TextStyle(fontSize: 18.0),
+              onChanged: (value) {
+                setState(() {
+                  _numberOfPeople = int.tryParse(value) ?? 0;
+                });
+              },
+            ),
+            SizedBox(height: 32.0),
+            ElevatedButton(
+              onPressed: _calculateSplit,
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: 16.0),
+              ),
+              child: Text(
+                'Split Evenly',
+                style: TextStyle(fontSize: 20.0),
               ),
             ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _createGroup,
-              child: Text('Create Group'),
-            ),
-            SizedBox(height: 16),
-            _groupMembers.isNotEmpty
-                ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Group Members:',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      TextField(
-                        controller: _memberNameController,
-                        decoration: InputDecoration(
-                          hintText: 'Enter member name',
-                          labelText: 'Member Name',
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      ElevatedButton(
-                        onPressed: _addMember,
-                        child: Text('Add Member'),
-                      ),
-                      SizedBox(height: 16),
-                      Text(
-                        'Group Members:',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      Column(
-                        children: _groupMembers
-                            .map((member) => Text(member))
-                            .toList(),
-                      ),
-                    ],
-                  )
-                : Container(),
+            SizedBox(height: 32.0),
+            if (_splitAmount > 0)
+              Text(
+                'Split Amount per Person:',
+                style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
+              ),
+            if (_splitAmount > 0)
+              Text(
+                '${_currencyFormat.format(_splitAmount)}',
+                style: TextStyle(fontSize: 24.0, color: Colors.blue),
+              ),
           ],
         ),
       ),
     );
   }
 
-  void _createGroup() {
+  void _calculateSplit() {
     setState(() {
-      _groupName = _groupNameController.text;
-      _numberOfUsers = int.tryParse(_numberOfUsersController.text) ?? 1;
-      _groupMembers.clear(); // Clear existing members when creating a new group
-    });
-  }
-
-  void _addMember() {
-    setState(() {
-      String memberName = _memberNameController.text;
-      if (memberName.isNotEmpty) {
-        _groupMembers.add(memberName);
-        _memberNameController
-            .clear(); // Clear the input field after adding a member
-      }
+      _splitAmount = _totalAmount / _numberOfPeople;
     });
   }
 }

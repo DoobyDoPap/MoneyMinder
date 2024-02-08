@@ -48,7 +48,8 @@ class SignUpPage extends StatelessWidget {
         _showErrorDialog(context, 'Error: ${e.message}');
       }
     } catch (e) {
-      _showErrorDialog(context, 'Failed to sign up. Please try again.');
+      print(e.toString());
+      // _showErrorDialog(context, 'Failed to sign up. Please try again.');
     }
   }
 
