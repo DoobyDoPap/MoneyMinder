@@ -24,7 +24,6 @@
     - [Database](#database)
 - [📈Progress](#progress)
 - [🔮Future Scope](#future-scope)
-- [💸Applications](#applications)
 - [🛠Project Setup](#project-setup)
 - [💻Usage](#usage)
 - [👨‍💻Team Members](#team-members)
@@ -81,32 +80,31 @@ Introducing our all-in-one finance management app, MoneyMinder. Seamlessly track
 
  All the fully implemented features:
 
-- [x] *Company's Stock price*:  Typing the symbol name of the company in the search bar and fetching the details.
-- [x] *Latest News*: Once the user is logged in, the home page displays the latest news.
+- [x] *Budget Tracker*:  The user can easily track his/her budgets through the app.
+- [x] *Target goal*: The user can set a goal and find out the amount to be saved or invested per month.
 
-- [x] *Financial Terms*: Once the user is logged in, the slideshow begins and on hovering, the images enlarges, providing convenience to users.
 
 All the partially implemented features:
 
-- [ ] Once the user is logged in, he/she nedds to fill the form, to get the output.
+- [ ] Once the user is logged in the data should be saved in the firebase and hence give the output in the app.
+- [ ] The split Bills page has to be a little more organised. 
 
 ## 🔮Future Scope
 
-- To provide information of all different investments option available with different risk factors and probable returns on principal amount.
+- To integrate API's for various purposes in the app.
+- To integrate a ML model for the user, so that the app can suggest the user where to invest.
 
-## 💸Applications
 
->If one wants to invest in stock market, they can get details of that company as well as analyze that stock so that they can invest in a right manner.
 
 ## 🛠Project Setup
 
->For Web-App
+>For App
 
  1. Clone the GitHub repo:
  In the home directory, run the following command:
 
  bash
- git clone <git@github.com>:druhi021204/InvestSavvy.git
+ git clone <git@github.com>:Veeransh14/MoneyMinder:git
 
  2. Enter into client directory, and type the following command to install all the dependencies:
 
@@ -129,22 +127,22 @@ All the partially implemented features:
 
 - Our team and their contact information
 
-- [Druhi Phutane](https://github.com/druhi021204): <druhiphutane@gmail.com>
-- [Siddhi Parekh](https://github.com/siddhip2004): <shparekh25@gmail.com>
-- [Purab Tamboli](https://github.com/thisisPurab): <purabrtamboli97@gmail.com>
-- [Nishat Patil](https://github.com/nishatp9): <nishatpatil902@gmail.com>
+- [Veeransh Shah](https://github.com/Veeransh14): <shahveeransh@gmail.com>
+- [Niyati Bisht](https://github.com/NiyatiBisht08): <niyatibisht08@gmail.com>
+- [Reegan Pinto](https://github.com/reeganpinto): <reeganpinto@gmail.com>
+- [Atharv Dubey](https://github.com/DoobyDoPap): <esistenza234@gmail.com>
 
 ## 👨‍🏫Mentors
 
 - Our Mentors and Their contact information
 
-- [Rohan Fatehchandka](https://github.com/rohanfatehchandka): <rohanfatehchandka@gmail.com>
-- [Arnav Zutshi](https://github.com/AsRaNi1): <arnzut1324@gmail.com>
+- [Aaryan Apte](https://github.com/aaryan-apte): <ajapte_b21@ce.vjti.ac.in>
+- [Sailie Ghole](https://github.com/sailie-ghole): <gholesailie1410@gmail.com>
 
 ## 📱Screenshots
 
 - A glimpse of our project
 
-![Home Page](https://drive.google.com/uc?id=1dD_0P-yMc71j0Jktw0rgLJsnjhDDH2rc)
-![Sign Up](https://drive.google.com/uc?id=1BdRuAx8ESTcx_PjWocw504p606ntSJHC)
-![Main Page](https://drive.google.com/uc?id=10BVCxuN_q1JRY3huQNcYjoc67nfyuY0u)
+![Home Page](https://drive.google.com/drive/folders/1XAi8RYupQ8Kk3gszDCKgIXxXFEnjMPS2)
+![Login Page](https://drive.google.com/drive/folders/1103I6u4Kyz34_pBzoOLrzsDxIwH_0rfu)
+![Investment page](https://drive.google.com/drive/folders/1kgmanEZeeoX4x515zl7u9H7Om_Vcwo5r)
