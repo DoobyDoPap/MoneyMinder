@@ -52,8 +52,8 @@ Introducing our all-in-one finance management app, MoneyMinder. Seamlessly track
 ## 🔗Links
 
 - [GitHub Repository](#https://github.com/druhi021204/InvestSavvy)
-- [Demo Video]()
-- [Drive Link to Screenshots of your project](https://drive.google.com/drive/u/1/folders/11LKJFjJvm2sGEqNjIBtGAZk5TKs17K8e)
+- [FirebaseCLI](https://console.firebase.google.com/u/1/project/moneyminder-c5285/overview)
+
 - [Hosted Website Link]()
 <!-- - [App APK Link]() -->
 - [Hosted Backend Link]()
