@@ -3,12 +3,12 @@
     <img src="./Untitled.png" alt="CoC Inheritance 2023" width="500" height="166">
   </a>
   <br>
-  InvestSavvy
+  MoneyMinder
 </h1>
 
 <div align="center">
-   <strong>InvestSavvy</strong> - A Stock Market Porfolio Optimization website<br>
-  CoC Inheritance 2023 || Web Architects 
+   <strong>MoneyMinder</strong> - A user-friendly finance tracking app<br>
+  CoC Inheritance 2023 || App Architects
 </div>
 <hr>
 
@@ -16,7 +16,7 @@
 <summary>Table of Contents</summary>
 
 - [📝Description](#description)
-    - [Key Features:](#key-features)
+    - [Key Features](#key-features)
 - [🔗Links](#links)
 - [🤖Tech-Stack](#tech-stack)
     - [CLient (Front-end)](#client-front-end)
@@ -37,7 +37,7 @@
 
 This project provides a comprehensive guidance to the user by providing them insights into potential return, Sharpe ratio and Volatility ratio of their preferred stocks within a specified time period. This tool would assist user in making wise decisions by investing into right tickers at right time and build their assests.
 
-#### Key Features: 
+#### Key Features
 
 <!-- 1. Login/Signup is the key feature that aids in making user's searches and interests private. -->
 
@@ -63,6 +63,7 @@ This project provides a comprehensive guidance to the user by providing them ins
 ## 🤖Tech-Stack
 
 #### CLient (Front-end)
+
 - ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
@@ -70,6 +71,7 @@ This project provides a comprehensive guidance to the user by providing them ins
 - CSS
 
 #### Server (Back-end)
+
 - ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
 - ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
@@ -78,9 +80,8 @@ This project provides a comprehensive guidance to the user by providing them ins
 
 - ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 
-
-
 #### Database
+
 - ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 
 ## 📈Progress
@@ -94,7 +95,7 @@ This project provides a comprehensive guidance to the user by providing them ins
 
 All the partially implemented features:
 
-- [ ] Once the user is logged in, he/she nedds to fill the form, to get the output. 
+- [ ] Once the user is logged in, he/she nedds to fill the form, to get the output.
 
 ## 🔮Future Scope
 
@@ -107,12 +108,12 @@ All the partially implemented features:
 ## 🛠Project Setup
 
 >For Web-App
+
  1. Clone the GitHub repo:
  In the home directory, run the following command:
 
  bash
- git clone git@github.com:druhi021204/InvestSavvy.git
- 
+ git clone <git@github.com>:druhi021204/InvestSavvy.git
 
  2. Enter into client directory, and type the following command to install all the dependencies:
 
@@ -123,13 +124,11 @@ All the partially implemented features:
 
  3. To start the backend server:
   bash
-    
-    cd server
-    npm init -y 
-    
-  
 
- ## 💻Usage
+    cd server
+    npm init -y
+
+## 💻Usage
 
 >Steps to run your project once its setup. If you have an app or website, list how the user can go about using it.
 
@@ -137,20 +136,21 @@ All the partially implemented features:
 
 - Our team and their contact information
 
-- [Druhi Phutane](https://github.com/druhi021204): druhiphutane@gmail.com 
-- [Siddhi Parekh](https://github.com/siddhip2004): shparekh25@gmail.com
-- [Purab Tamboli](https://github.com/thisisPurab): purabrtamboli97@gmail.com
-- [Nishat Patil](https://github.com/nishatp9): nishatpatil902@gmail.com 
+- [Druhi Phutane](https://github.com/druhi021204): <druhiphutane@gmail.com>
+- [Siddhi Parekh](https://github.com/siddhip2004): <shparekh25@gmail.com>
+- [Purab Tamboli](https://github.com/thisisPurab): <purabrtamboli97@gmail.com>
+- [Nishat Patil](https://github.com/nishatp9): <nishatpatil902@gmail.com>
 
 ## 👨‍🏫Mentors
 
 - Our Mentors and Their contact information
 
-- [Rohan Fatehchandka](https://github.com/rohanfatehchandka): rohanfatehchandka@gmail.com
-- [Arnav Zutshi](https://github.com/AsRaNi1): arnzut1324@gmail.com 
+- [Rohan Fatehchandka](https://github.com/rohanfatehchandka): <rohanfatehchandka@gmail.com>
+- [Arnav Zutshi](https://github.com/AsRaNi1): <arnzut1324@gmail.com>
 
 ## 📱Screenshots
-- A glimpse of our project 
+
+- A glimpse of our project
 
 ![Home Page](https://drive.google.com/uc?id=1dD_0P-yMc71j0Jktw0rgLJsnjhDDH2rc)
 ![Sign Up](https://drive.google.com/uc?id=1BdRuAx8ESTcx_PjWocw504p606ntSJHC)
