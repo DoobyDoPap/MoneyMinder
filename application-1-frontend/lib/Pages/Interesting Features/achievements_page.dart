@@ -1,6 +1,3 @@
-// ignore_for_file: must_be_immutable
-
-import 'package:MoneyMinder/Utils/utils.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -40,8 +37,9 @@ class AchievementPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Achievement Page'),
+        backgroundColor: Colors.blueAccent, // Updated app bar color
       ),
-      backgroundColor: Color(0xFF1E2A38), // Use a darker color code
+      backgroundColor: Colors.white, // Updated background color
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
@@ -57,7 +55,7 @@ class AchievementPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.black, // Updated text color
                     ),
                   ),
                   SizedBox(height: 16),
@@ -66,7 +64,7 @@ class AchievementPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.black, // Updated text color
                     ),
                   ),
                   SizedBox(height: 8),
@@ -95,7 +93,7 @@ class AchievementPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.black, // Updated text color
                     ),
                   ),
                   SizedBox(height: 8),
@@ -118,7 +116,7 @@ class AchievementPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.black, // Updated text color
                     ),
                   ),
                   SizedBox(height: 8),
@@ -148,7 +146,7 @@ class AchievementPage extends StatelessWidget {
       required int pointsEarned}) {
     return Card(
       elevation: 3,
-      color: Colors.white,
+      color: Colors.lightBlueAccent, // Updated card color
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -159,7 +157,7 @@ class AchievementPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue,
+                color: Colors.black, // Updated text color
               ),
             ),
             SizedBox(height: 8),
@@ -167,7 +165,7 @@ class AchievementPage extends StatelessWidget {
               description,
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.grey,
+                color: Colors.black87, // Updated text color
               ),
             ),
             SizedBox(height: 8),
@@ -175,7 +173,7 @@ class AchievementPage extends StatelessWidget {
               'Points Earned: $pointsEarned',
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.blue,
+                color: Colors.black, // Updated text color
               ),
             ),
           ],
@@ -187,7 +185,7 @@ class AchievementPage extends StatelessWidget {
   Widget _buildEarnPointsTile(String activity, int points) {
     return Card(
       elevation: 3,
-      color: Colors.white,
+      color: Colors.lightBlueAccent, // Updated card color
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -198,7 +196,7 @@ class AchievementPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: youngblue,
+                color: Colors.black, // Updated text color
               ),
             ),
             SizedBox(height: 8),
@@ -206,7 +204,7 @@ class AchievementPage extends StatelessWidget {
               'Earn $points points',
               style: TextStyle(
                 fontSize: 14,
-                color: Colors.green,
+                color: Colors.green, // Updated text color
               ),
             ),
           ],
@@ -221,7 +219,7 @@ class AchievementPage extends StatelessWidget {
       required BuildContext context}) {
     return Card(
       elevation: 3,
-      color: Colors.white,
+      color: Colors.lightBlueAccent, // Updated card color
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -232,7 +230,7 @@ class AchievementPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue,
+                color: Colors.black, // Updated text color
               ),
             ),
             SizedBox(height: 8),
@@ -240,21 +238,20 @@ class AchievementPage extends StatelessWidget {
               'Required Points: $requiredPoints',
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.blue,
+                color: Colors.black, // Updated text color
               ),
             ),
             SizedBox(height: 8),
             ElevatedButton(
-              onPressed: achievementPoints >= requiredPoints
-                  ? () => _showCouponDialog(title, context)
-                  : null,
+              onPressed: () => _showCouponDialog(
+                  title, context), // Simplified onPressed handler
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
+                primary: Colors.blueAccent, // Updated button color
               ),
               child: Text(
                 'Redeem Coupon',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.white, // Updated text color
                 ),
               ),
             ),

@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text('Error'),
-            content: Text('Please enter both username and password.'),
+            content: Text('Please enter both email and password.'),
             actions: [
               TextButton(
                 onPressed: () {
@@ -96,8 +96,8 @@ class LoginPage extends StatelessWidget {
                 controller: _usernameController,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.person, color: Colors.white),
-                  labelText: 'Username',
-                  hintText: 'Enter username',
+                  labelText: 'Email',
+                  hintText: 'Enter Email',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     borderSide: BorderSide.none,
