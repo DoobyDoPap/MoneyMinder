@@ -29,6 +29,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_native_splash: ^2.3.10
   cloud_firestore:
   flutter:
     sdk: flutter
@@ -39,7 +40,19 @@ dependencies:
   intl: ^0.18.1
   logger: ^2.0.1
   url_launcher: ^6.1.12
-  flutter_native_splash: ^2.3.7
+
+  # flutter_native_splash:
+# color: "#ffffff"
+  # image: assets/images/welcome_splash.png
+  # background_image: assets/images/backround.jpeg
+  # branding: assets/images/welcome_splash.png
+  # branding_mode: bottom
+
+  # android_12:
+  #   image: assets/images/welcome_splash.png
+  #   icon_background_color: "#ffffff"
+  #   icon_background_color_dark: "#121212"
+  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -86,6 +99,7 @@ flutter:
     - assets/images/Transfer.png
     - assets/images/star.png
     - assets/images/fiverr.png
+    - assets/images/SplashPage2.png
       #- images/a_dot_ham.jpeg
 
 

@@ -1,10 +1,6 @@
 import 'package:MoneyMinder/Pages/Home%20Page/login_page.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -36,19 +32,12 @@ class SplashScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/logo.png', // Replace with your MoneyMinder logo image
-              height: 100.0,
-              width: 100.0,
+              'assets/images/SplashPage2.png', 
+              height: MediaQuery.of(context).size.height * 0.972, 
+            width: MediaQuery.of(context).size.width * 1.9, 
             ),
             SizedBox(height: 20.0),
-            Text(
-              'MoneyMinder',
-              style: TextStyle(
-                fontSize: 24.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
+            
           ],
         ),
       ),
