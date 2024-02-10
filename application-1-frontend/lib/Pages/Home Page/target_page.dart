@@ -144,9 +144,3 @@ class _TargetPageState extends State<TargetPage> {
     setState(() {});
   }
 }
-
-void main() {
-  runApp(MaterialApp(
-    home: TargetPage(),
-  ));
-}
