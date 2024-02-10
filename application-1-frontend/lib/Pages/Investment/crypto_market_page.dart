@@ -19,6 +19,13 @@ class CryptoMarketPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Crypto Market'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Navigate to the investment page
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(

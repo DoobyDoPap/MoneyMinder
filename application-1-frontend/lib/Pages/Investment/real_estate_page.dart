@@ -20,6 +20,13 @@ class RealEstatePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Real Estate'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Navigate back to the previous page
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(

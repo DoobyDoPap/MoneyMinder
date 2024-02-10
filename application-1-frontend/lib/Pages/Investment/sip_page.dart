@@ -19,6 +19,13 @@ class SIPPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('SIP Overview'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Navigate back to the previous page
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -60,7 +67,7 @@ class SIPPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16),
-              _buildSIPCalculator(context), // Pass context here
+              _buildSIPCalculator(context),
             ],
           ),
         ),
@@ -85,7 +92,6 @@ class SIPPage extends StatelessWidget {
   }
 
   Widget _buildSIPCalculator(BuildContext context) {
-    // Add context parameter
     TextEditingController amountController = TextEditingController();
     TextEditingController durationController = TextEditingController();
     TextEditingController interestRateController = TextEditingController();
@@ -119,7 +125,6 @@ class SIPPage extends StatelessWidget {
             int duration = int.parse(durationController.text);
             double annualReturnRate = double.parse(interestRateController.text);
 
-            // SIP calculation formula: A = P * [(1 + r)^nt - 1] / r
             double futureValue = monthlyInvestment *
                 (((1 + (annualReturnRate / 100 / 12)) * (12 * duration)) - 1) /
                 (annualReturnRate / 100 / 12);

@@ -19,6 +19,13 @@ class GoldTradePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Gold Trade'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Navigate back to the previous page
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(

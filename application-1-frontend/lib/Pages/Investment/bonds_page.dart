@@ -19,6 +19,12 @@ class BondsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Bonds Overview'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Navigate back to previous screen
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
